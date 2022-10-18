@@ -34,7 +34,6 @@ Given a 1-dimensional rod composed by N-particles, linked each others with a "sp
 where the last term $\Omega_0^2 q_n^2$ is relative to the equilibrium position of the n-particle.
 The \emph{periodic boundaries conditions} to $N \to \infty$ and $a \to 0$.
 
-
 On the other side we can write the Newtonian equation as 
 
 \begin{equation*}
@@ -70,13 +69,123 @@ $\int_{0}^{L} dx e^{i (k-k') x} = L \delta_{k, k'}$ .
 
 Somehow we may land on this following expression:
 \begin{equation*}
-\frac{1}{L} \sum_{k, k'} L \delta_{k, k'} Q_k \dot Q_{k'} = \sum_k Q_k \dot Q_{k} =   \sum_k | \dot Q_{k} |^2
+\frac{1}{L} \sum_{k, k'} L \, \delta_{k, k'} Q_k \dot Q_{k'} = \sum_k Q_k \dot Q_{k} =   \sum_k | \dot Q_{k} |^2
 \end{equation*}
-To finally get a total classical description, a discrete sum on a numerable set, as follow
+To finally get a \emph{total classical description}: a discrete sum on a numerable set, as follow
 
 \begin{equation*}
 H = \frac{1}{2}  \sum_k  | \dot Q_{k} |^2 + k^2 v^2  | Q_{k} |^2
 \end{equation*}
+
+As before, notice that the sum $ \sum_{n=1}^N $ for $L \to \infty$ became $\frac{L}{2 \pi} \int dk$ and it admits waves.
+Extending this to 3-dimensional space, it became
+\begin{equation*}
+ \sum_{\vec k} (\ldots) \quad (\mbox{when }L \to \infty) \quad \frac{V}{(2\pi)^3} \int d^3 k 
+\end{equation*}
+
+\paragraph{Quantum system:}  let's consider now a quantum system, a quantum description. \\
+\emph{Postulate} the followings:
+
+\begin{equation*}
+\begin{split}
+& \Big[ q_l , p_n \Big] = i \, \delta_{l\,n} \\
+& \Big[ q_l , q_n \Big] = 0 \\
+& \Big[ p_l , p_n \Big] = 0 \\
+\end{split}\quad\quad\quad
+\begin{split}
+& \Big[ Q_l , P_n \Big] = i \, \delta_{ln} \\
+& \Big[ Q_l , Q_n \Big] = 0 \\
+& \Big[ P_l , P_n \Big] = 0
+\end{split}\quad\quad\quad
+\begin{split}
+& \mbox{Where natural units are applied:} \\
+& \quad\quad h = 1 \\
+& \quad\quad c = 1
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+& \Rightarrow\quad\quad q_n^{\dagger} = q_n  \quad , \quad Q_{-j} = Q_{j}^{\dagger} \quad , \quad  P_{-j} = P_{j}^{\dagger} \\
+\mbox{e.g.} & \quad q_n^{\dagger} = \Big( \sum_n e^{i n j} \frac{Q_j}{\sqrt{N}} \Big)^{\dagger} =  \sum_j e^{ - i n j} \frac{Q_j^{\dagger}}{\sqrt{N}} = q_n
+\end{split}
+\end{equation*}
+
+From the hamiltonian
+\begin{equation*}
+\mathcal{H} = \frac{1}{2} \sum_j \Big[ P_j\,P_j^{\dagger} + \omega_j^2 \, Q_j\,Q_j^{\dagger}  \Big]
+\end{equation*}
+and given the following operators, we find $Q_j$ and $P_j$:
+\begin{equation*}
+\begin{split}
+& a_j = \frac{1}{\sqrt{2\omega_j}} \Big( \omega_j Q_j + i\,P_j^{\dagger} \Big) \\
+& a_j = \frac{1}{\sqrt{2\omega_j}} \Big( \omega_j Q_j^{\dagger} - i\,P_j \Big) 
+\end{split}\quad\quad\quad\Rightarrow\quad\quad
+\begin{split}
+& Q_j = \frac{1}{\sqrt{2\omega_j}} \Big( a_j + a_{-j}^{\dagger} \Big) \\
+& P_j = -i \Big( \frac{\omega_j}{2} \Big)^{\frac{1}{2}} \Big( a_{-j} - a_j^{\dagger} \Big)
+\end{split}\quad\quad\quad\quad \mbox{and} \quad\quad
+\begin{split}
+& \mbox{keep in mind} \\
+& \Big[ a_j , a_{j'} \Big] = \delta_{j \, j'}
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+& Q_j Q_j^{\dagger} = \frac{1}{2 \omega_j} \Big( a_j a_j^{\dagger} + a_j a_{-j} + a_{-j}^{\dagger} a_j^{\dagger} + a_{-j}^{\dagger} a_{-j} \Big) \\
+& P_j P_j^{\dagger} =  \Big( \frac{\omega_j}{2} \Big)^{\frac{1}{4}} \Big( a_{-j} a_{-j}^{\dagger} - a_{-j} a_j - a_j^{\dagger}a_{-j}^{\dagger} + a_j^{\dagger} a_j \Big)
+\end{split}
+\end{equation*}
+With these lasts results we may write the $\mathcal{H}$ as
+\begin{equation*}
+\begin{split}
+\mathcal{H} & = \frac{1}{2} \sum_j \Big[ P_j\,P_j^{\dagger} + \omega_j^2 \, Q_j\,Q_j^{\dagger}  \Big]
+ =  \frac{1}{2} \sum_j \omega_j \Big( a_j a_j^{\dagger} + a_j^{\dagger} a_j \Big) \\
+& =  \frac{1}{2} \sum_j  \omega_j \Big( 2 \, a_j^{\dagger} a_j + 1 \Big)
+= \sum_j  \omega_j \Big( a_j^{\dagger} a_j + \frac{1}{2} \Big)
+\end{split}
+\end{equation*}
+
+\paragraph{Phonons description} Phonons are bosons, they're used to describe the quantum problem of the rod. Phonons are like photons but in the world of sound instead of light.
+A n-particles system is defined with 
+\begin{equation*}
+\ket{n_1, n_2, n_3, \ldots } = (a_1^{\dagger})^{n_1}  (a_2^{\dagger})^{n_2}  (a_3^{\dagger})^{n_3} \ldots \ket{0}
+\end{equation*}
+and for the 1-d oscillator, with energy $E_n$, is as follows
+\begin{equation*}
+\begin{split}
+& \ket{n} =  (a^{\dagger})^{n} \ket{0} \\
+& E_n = \hbar \omega (n + \frac{1}{2}) \stackrel{nu}{=} \omega (n + \frac{1}{2}) 
+\end{split}
+\end{equation*}
+For the phonons is easy to \emph{understand} which is the medium that make the transmission possible, but what about light?
+For the light, photons, the medium may also be the \emph{vacuum}.
+
+\begin{center}
+Filosofeggiamo un po' ora:
+\fbox{\begin{minipage}{42em}
+\begin{center}
+\large \emph{Particles are the excitation of the field} \\
+\normalsize If you don't touch the piano it stays quiet, but if you play it it makes music ... song's particles.
+\large \emph{The field is permanent.} \\
+\normalsize \emph{Particles are not fixed, they live and die.} \\
+You cannot touch or see the field that you're studying, but you can see/detect the particle that pop out from the field. \\
+\large Fields are NOT real but mathematical description of the world.
+\end{center}
+\end{minipage}}
+\end{center}
+
+When you measure an energy it's always relative to an offset, a ground-state.
+Because you want the \emph{vacuum} to be Lorentz invariant.
+\begin{equation*}
+\quad\Rightarrow\quad 
+\Big( \mathcal{H} - E_0 \Big) \ket{0} = 0
+\end{equation*}
+
+
+
+
+
 
 
 
