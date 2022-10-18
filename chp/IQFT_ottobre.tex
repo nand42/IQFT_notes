@@ -1,0 +1,88 @@
+%%
+%% Author: Dario Chinelli
+%% begin 2022-10-16
+%% last mod 2022-12-24
+%%
+
+
+%%  NON ESEGUIRE QUESTO FILE !
+
+
+% Preamble
+\documentclass[class=article]{standalone}
+
+% Packages
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+
+% Document
+\begin{document}
+
+\section{The rod}
+
+Given a 1-dimensional rod composed by N-particles, linked each others with a "spring", the hamiltonian density is
+
+\begin{equation*}
+\begin{split}
+\mathcal{H} = \frac{1}{2} \sum_{n=1}^{N} \Big[  P_n^2 + \Omega^2 (q_n - q_{n+1})^2 + \Omega_0^2 q_n^2 \Big]
+\end{split}
+\end{equation*}
+
+where the last term $\Omega_0^2 q_n^2$ is relative to the equilibrium position of the n-particle.
+The \emph{periodic boundaries conditions} to $N \to \infty$ and $a \to 0$.
+
+
+On the other side we can write the Newtonian equation as 
+
+\begin{equation*}
+\begin{split}
+& H = \frac{1}{2} \int_{0}^{L} dx \Big[ p^2(x) + v^2 \Big( \frac{\partial q(x)}{\partial x} \Big) \Big] \\
+% & \mbox{where} \\
+&  p(x) = \dot q(x) \\
+&  \ddot q(x) = v^2 \frac{\partial^2 q(x)}{\partial x^2}
+\end{split}
+\end{equation*}
+
+the solution inside the boundaries is
+\begin{equation*}
+\ddot q_n = \Omega^2 \Big( q_{n+1} + q_{n-1} -2 q_n \Big)
+\end{equation*}
+
+
+\paragraph{Normal modes} or normal frequencies
+\begin{equation*}
+\begin{split}
+& q_n = \sum_j e^{i j n} \frac{Q_j}{\sqrt{N}} \\
+& q(x) =  \frac{1}{\sqrt{a} } \sum_n e^{ \frac{2 \pi l}{N a} (n a) } \frac{Q_j}{\sqrt{N}}  = \frac{1}{\sqrt{a} }  \sum_k e^{i k x} \frac{Q_k}{\sqrt{N}} \\
+& \quad\quad k = \frac{2 \pi l}{L} \\
+& \Rightarrow\quad q(x) =  \sum_k e^{i k x} \frac{Q_k}{\sqrt{N a}} =  \sum_k e^{i k x} \frac{Q_k}{\sqrt{L}}
+\end{split}
+\end{equation*}
+
+Considering now the Newtonian equation, $p^2(x) = \dot q^2(x) $, 
+$ \sum_{n=1}^N e^{i n (j-j')} = \delta_{j, j'}$ where $j = \frac{2\pi l}{N}$, 
+we can move from the sum to the integral using the following relation 
+$ \sum_{n=1}^N \to \frac{1}{a} \int_{0}^{L} dx$ and this leads to
+$\int_{0}^{L} dx e^{i (k-k') x} = L \delta_{k, k'}$ .
+
+Somehow we may land on this following expression:
+\begin{equation*}
+\frac{1}{L} \sum_{k, k'} L \delta_{k, k'} Q_k \dot Q_{k'} = \sum_k Q_k \dot Q_{k} =   \sum_k | \dot Q_{k} |^2
+\end{equation*}
+To finally get a total classical description, a discrete sum on a numerable set, as follow
+
+\begin{equation*}
+H = \frac{1}{2}  \sum_k  | \dot Q_{k} |^2 + k^2 v^2  | Q_{k} |^2
+\end{equation*}
+
+
+
+
+
+
+
+
+\end{document}
