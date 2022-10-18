@@ -1,0 +1,57 @@
+%%
+%% Author: Dario Chinelli
+%% begin 2022-10-16
+%% last mod 2022-12-24
+%%
+
+
+%%  FILE DA ESEGUIRE 
+
+
+% Preamble
+\documentclass[10pt,a4paper]{report}
+\newcommand{\fontsmall}{\fontsize{5pt}{6pt}\selectfont}
+
+% Packages
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+\usepackage{amsmath}
+\usepackage[left=2.8cm, right=2.8cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[section]{placeins}
+
+
+% Document
+\begin{document}
+
+\begin{titlepage}
+	\topskip0pt
+	%\vspace*{\fill}
+	\centering
+	\vspace*{50mm}
+	\huge \textbf{\textsc{Introduction to Quantum Field Theory}} \\
+	\vspace*{3mm}
+	\Large \textit{Notes re-written from lessons' attendance, 2022} \\
+	\Large \textit{Prof. Polosa} \\
+	\vspace*{4mm}
+	\Large \textsc{Corso di Laurea Magistrale in Fisica - Sapienza}
+\end{titlepage}
+\restoregeometry
+
+
+\FloatBarrier
+\chapter{Ottobre}
+Appunti delle lezioni del Prof. Polosa relative al mese di ottobre 2022.
+\import{chp/}{IQFT_ottobre}
+
+\FloatBarrier
+\chapter{Novembre}
+Appunti delle lezioni del Prof. Polosa relative al mese di novembre 2022.
+\import{chp/}{IQFT_novembre}
+
+\FloatBarrier
+\chapter{Dicembre}
+Appunti delle lezioni del Prof. Polosa relative al mese di dicembre 2022.
+\import{chp/}{IQFT_dicembre}
+
+
+\end{document}
