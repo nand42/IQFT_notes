@@ -21,8 +21,9 @@
 % Document
 \begin{document}
 
-\section{The rod}
 
+\section{4 ottobre}
+\paragraph{The rod}
 Given a 1-dimensional rod composed by N-particles, linked each others with a "spring", the hamiltonian density is
 
 \begin{equation*}
@@ -182,12 +183,274 @@ Because you want the \emph{vacuum} to be Lorentz invariant.
 \Big( \mathcal{H} - E_0 \Big) \ket{0} = 0
 \end{equation*}
 
+Given a general operator $\Theta (t)$ and its derivate $\dot \Theta = i \Big[ \mathcal{H}, \Theta(t) \Big]$ so that: 
+
+\begin{equation*}
+\begin{split}
+\dot a(t) = i  \Big[ \mathcal{H}, a(t) \Big] = - i \, \omega a(t)
+\end{split} 
+\quad\quad \mbox{where}\quad
+\begin{split}
+& \Big[ a ,  \mathcal{H}\Big]  = \omega a \\
+& \Big[ \mathcal{H} , a^{\dagger} \Big]  = \omega a^{\dagger}
+\end{split}
+\quad\quad\Rightarrow\quad
+\begin{split}
+a(t) = e^{-i \omega t} a(0)
+\end{split}
+\end{equation*}
+
+(Finire lezione del 4 ottobre manca mezza pagina di esercizio - chiedere appunti)
+
+
+\newpage
+\section{6 ottobre}
+
+\begin{equation*}
+\begin{split}
+\phi(x) & = \sum_{\vec k} \frac{1}{\sqrt{2 \omega_k V}} \Big( a_{\bar k} e^{i k x} +  a_{\bar k}^{\dagger} e^{-i k x} \Big) \\
+& = \sum_{\vec k} \frac{i}{2 V} \Big[ e^{i\,\vec k (\vec x \cdot \vec y)} + e^{- i\,\vec k (\vec x \cdot \vec y)} \Big]
+\end{split} \quad\quad\quad\mbox{considering} \quad
+\begin{split}
+& \Big[ a_k , a_{\bar k}^{\dagger}  \Big] = \delta_{\bar k, \bar k'} \\
+& \Big[ \phi(\vec x, t), \dot\phi(\vec y, t) \Big] = i \, V \delta^3 (\vec x - \vec y)
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+&\mbox{Da capire che senso ha} \\
+&\mbox{e contestualizzarlo} \quad\Rightarrow
+\end{split}\quad\quad\quad\quad
+\begin{split}
+& k_{\mu} = (\vec k , i \omega_{\vec k}) \\
+& x_{\mu} = (\vec x , i t) \\
+& k_{\mu} x_{\mu} = \vec k \cdot \vec x = k_{\mu} k_{\nu} \delta_{\mu\,\nu} \\
+& k_{\mu} x_{\mu} = \vec k \cdot \vec x - \omega_{\vec k} t
+\end{split}
+\end{equation*}
+
+
+\emph{When things go to infinity} $\sum_{\vec k}  \rightarrow \frac{V}{(2\pi)^3} \int d^3 \vec k$ and remember that \say{\emph{if things doesn't work there will be some volume $V$ somewhere}}.
+Creation and destruction operators are contained into the description of the field.
+The energy levels' order are given from the term $ n \omega$ and you can forgot about the $\frac{1}{2}$.
+
+\paragraph{Classical problem} Given the coordinates $q_i(t)$ time-dependents, where $i = 1, 2, 3, \ldots, 3N$, we can write the system of the $2^o$ order derivate as follow
+\begin{equation*}
+\begin{split}
+& F_i = m \ddot q_i \\
+& F_i = - \frac{d V}{d q_i}
+\end{split}
+\quad\quad \mbox{given the initial conditions}\quad
+\begin{split}
+& q_i(t_0) \\
+& \dot q_i(t_0) 
+\end{split}
+\quad\quad \mbox{or given the boundary conditions}\quad
+\begin{split}
+& q_i(t_1) \,,\, q_i(t_2)   \\
+& \dot q_i(t_1) \,,\, \dot q_i(t_2)  
+\end{split}
+\end{equation*}
+
+\paragraph{Action Functional} The \emph{Action Functional $S$} 
+\begin{equation*}
+S = \int_{t_1}^{t_2} dt \, L \Big( q_i(t),\dot q_i(t) \Big)
+\end{equation*}
+is defined such that a variation on the trajectory leads to a variation on $S$.
+So we can make a variables' transformation such that the new coordinates are the same as before plus a variational term
+\begin{equation*}
+\begin{split}
+& q_i(t) \rightarrow q_i(t) + \delta q_i(t) \\
+& \dot q_i(t) \rightarrow \dot q_i(t) + \delta \dot q_i(t) =  \dot q_i(t) + \frac{d}{dt} \delta q_i(t)
+\end{split}
+\end{equation*}
+hence the action became
+
+\begin{equation*}
+\begin{split}
+\delta S & = \int_{t_1}^{t_2} L \Big( q_i(t) + \delta q_i(t) ,  \dot q_i(t) + \frac{d}{dt} \delta q_i(t) \Big) dt -  \int_{t_1}^{t_2} dt \, L \Big( q_i(t),\dot q_i(t) \Big) dt = \\
+& =  \int_{t_1}^{t_2} \, \Big(   \frac{\partial L}{\partial q_i} \delta q_i(t)    , \frac{\partial L}{\partial \dot q_i}  \frac{d}{dt} \delta q_i(t)    \Big)  dt
+=  \int_{t_1}^{t_2} \Big(  \frac{\partial L}{\partial q_i}  - \frac{d}{dt}  \frac{\partial L}{\partial \dot q_i}   \Big) \delta q_i \, dt
+\end{split}
+\end{equation*}
+in the last step we used the boundary condition at $t_1$ and $t_2$, so that $\delta q_i(t_1) = \delta q_i(t_2) = 0$.
+The last step leads directly to the \emph{lagrangian equation}, that referred to the following generic $L$ in 3-D is:
+\begin{equation*}
+\begin{split}
+& \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot q_i} \Big) = \frac{\partial L}{\partial q_i} \\
+& L = \frac{1}{2} m \dot\vec q^2 - V(\vec q)
+\end{split}
+\end{equation*}
+this leads to the Newton equation for the \emph{free motion}:
+\begin{equation*}
+\begin{split}
+& F = 0 \\ 
+& m \ddot q_i = - \frac{\partial V}{\partial q_i }  = F
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& \ddot \vec q = 0 \\
+& \dot \vec q = \vec w \\
+& \vec q = \vec w t + \vec r
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& \vec q_1 = \vec w t_1 + \vec r \\
+& \vec q_2 = \vec w t_2 + \vec r
+\end{split}
+\end{equation*}
+so now we can find the Lagrangian depending on $q_1,q_2$ and $t_1,t_2$
+\begin{equation*}
+\begin{split}
+& \vec w = \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} \\
+& \vec q =  \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} t + \vec r
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& (t= t_1) : \; (t_1 - t_2) \vec q_1 =  (\vec q_1 \cdot \vec q_2) t_1 + \vec r (t_1 - t_2) \\
+& (t= t_2) : \; (t_1 - t_2) \vec q_2 =  (\vec q_1 \cdot \vec q_2) t_2 + \vec r (t_1 - t_2) 
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& \vec q = \Big( \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} \Big) t + \frac{\vec q_2 t_1 - \vec q_1 t_2}{t_1 - t_2} \\
+& \dot \vec q =  \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2}  
+\end{split}
+\end{equation*}
+where the last two equations explicit the boundary conditions. 
+The Lagrangian of a free motion became
+\begin{equation*}
+\begin{split}
+L = \frac{1}{2} m \dot \vec q^2 = \frac{1}{2} m \Big( \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} \Big)^2
+\end{split}
+\end{equation*}
+And the minimal Action is written as follow and represents \say{the true trajectory}
+\begin{equation*}
+\begin{split}
+\int_{t_1}^{t_2} dt L = \frac{1}{2} m \Big(   \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2}  \Big)^2 (t_1 - t_2)  = S_{min}
+\end{split}
+\end{equation*}
+
+\begin{center}
+\fbox{\begin{minipage}{42em}
+\begin{center}
+\large
+\say{\emph{The real motion is given by the minimum action.}}
+\normalsize
+\end{center}
+\end{minipage}}
+\end{center}
+
+\paragraph{Hamiltonian equation}
+What happen with the generic lagrangian instead substituting the free motion path?
+Starting from the lagrangian equation:
+\begin{equation*}
+\begin{split}
+\frac{d }{d t } \Big( \frac{\partial L}{\partial \dot q_i } \Big) - \frac{\partial L}{\partial q_i }  & = 0  \quad\quad  \Big[ \mbox{where}\quad \dot q_i = p_i \Big]  \\ 
+\dot q_i \frac{d }{d t } \Big( \frac{\partial L}{\partial \dot q_i } \Big) - \dot q_i \frac{\partial L}{\partial q_i } & = 0 \\
+\frac{d }{d t } \Big( \dot  q_i \frac{\partial L}{\partial \dot q_i } \Big) - \underbrace{ \dot  q_i \frac{\partial L}{\partial \dot  q_i} - \dot  q_i \frac{\partial L}{\partial  q_i } } & = 0 \\
+\frac{d }{d t } \Big( \dot  q_i \frac{\partial L}{\partial \dot q_i } \Big) -  \frac{d }{d t } \Big( L (q_i, \dot q_i) \Big) & = 0
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+\frac{d }{d t } \Big( \dot q_i p_i - L(q_i, \dot q_i) \Big) = 0
+\end{split}
+\end{equation*}
+
+Given the lagrangian as $L(q_i, \dot q_i)$ let's check its \emph{invariance} when the coordinates change: the lagrangian must not change.
+For small $\varepsilon$
+\begin{equation*}
+\begin{split}
+q_i  & \to q_i + \varepsilon_i f_i(q_1, \ldots, q_i, \ldots, q_N) \\
+\dot q_i  & \to \dot q_i + \varepsilon_i \frac{d }{d t }  f_i(q_1, \ldots, q_i, \ldots, q_N)
+\end{split}
+\end{equation*}
+We can write the variation of the lagrangian as
+\begin{equation*}
+\begin{split}
+\sum \frac{\partial L}{\partial q_i } \delta q_i + \frac{\partial L}{\partial \dot q_i } \delta \dot q_i & = 0 \\
+\sum \underbrace{ \frac{\partial L}{\partial q_i } } f_i + \underbrace{ \frac{\partial L}{\partial \dot q_i }} \frac{d }{d t } f_i & = 0 \\
+\frac{d }{d t } \Big( \frac{\partial L}{\partial \dot q_i }  \Big) \quad\quad \tau_i \quad\quad\; &
+\end{split}\quad\quad\quad\longrightarrow\quad
+\begin{split}
+\frac{d }{d t } \sum_i p_i f_i = 0
+\end{split}
+\end{equation*}
+Since the lagrangian is \emph{invariant} for transformation, as we just saw, this leads to a \emph{conservation} $\leftrightarrow$ \emph{symmetry}.
+This concept is also known as \emph{Noether theorem}.
+
+
+\vspace{10mm}
+\large 
+Now ...something here not so clear...
+
+\normalsize
+about changing formalism from Classical Mechanic to Quantum Mechanic.
+\vspace{10mm}
+
+
+\paragraph{Hamiltonian and lagrangian density}
+Since the beginning of the course we introduce, without saying, and use the hamiltonian density $\mathcal{H}$ instead of the hamiltonian $H$, that is defined as:
+\begin{equation*}
+H = \int_0^L dx \, \mathcal{H}
+\end{equation*}
+as well as the lagrangian density $\mathcal{L}$ instead of the lagrangian L:
+\begin{equation*}
+L = \int_0^L dx \, \mathcal{L} \quad\quad\quad\quad \mbox{( ! controllare se è corretto ! )}
+\end{equation*}
+
+
+\paragraph{Back to the \emph{rod}} using now in hamiltonian formalism
+\begin{equation*}
+\begin{split}
+\mathcal{H} & = \frac{1}{2} \dot \phi^2 + \frac{1}{2} v^2 (\partial_x \phi) 
+= \frac{1}{2} p^2 + \frac{1}{2} v^2 (\partial_x \phi) \\
+\mathcal{L}  = p \, \dot q - \mathcal{H} & = \dot\phi \dot\phi - \Big( \frac{1}{2} \phi^2  +  \frac{1}{2} v^2 (\partial_x \phi)^2  \Big) 
+= \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 
+\end{split}\quad\quad\quad\quad
+\begin{split}
+\mbox{where}\quad p = \dot \phi 
+\end{split}
+\end{equation*}
+when the velocity is set as $v = \Omega a$ it depends strictly on the material of the medium.
+So when moving in the vacuum, and not along a rod, what happens? 
+The velocity will be set to $v = c = 1$, as natural units are used, and \say{forget the mass} such that $m=1$.
+The lagrangian density became consistent with this
+\begin{equation*}
+\begin{split}
+\mathcal{L} = \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 
+\end{split}
+\end{equation*}
+The definition of \emph{field} goes with the definition of a proper \emph{energy density}.
+The action became:
+\begin{equation*}
+\begin{split}
+S = \int_{t_1}^{t_2} dt \, L =  \int_{t_1}^{t_2} dt \int_0^L dx \, \mathcal{L}
+\end{split}
+\end{equation*}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{7 ottobre}
 
 
 
