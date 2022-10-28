@@ -411,11 +411,12 @@ when the velocity is set as $v = \Omega a$ it depends strictly on the material o
 So when moving in the vacuum, and not along a rod, what happens? 
 The velocity will be set to $v = c = 1$, as natural units are used, and \say{forget the mass} such that $m=1$.
 The lagrangian density became consistent with this
-\begin{equation*}
+\begin{equation}
 \begin{split}
 \mathcal{L} = \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 
 \end{split}
-\end{equation*}
+\label{eq:lagrangian_phi}
+\end{equation}
 The definition of \emph{field} goes with the definition of a proper \emph{energy density}.
 The action became:
 \begin{equation*}
@@ -427,30 +428,155 @@ S = \int_{t_1}^{t_2} dt \, L =  \int_{t_1}^{t_2} dt \int_0^L dx \, \mathcal{L}
 
 
 
+\newpage
+\section{7 ottobre}
+Continuing from the lagrangian \ref{eq:lagrangian_phi} 
+\begin{equation*}
+\begin{split}
+\mathcal{L}  = \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 = \frac{1}{2} (\partial_t \phi)^{2}  - \frac{1}{2} v^2 (\partial_x \phi)^{2}
+\end{split}
+\end{equation*}
+we see the lagrangian as function of these variables $\mathcal{L} = \mathcal{L}(\phi, \, \partial_t \phi, \, \partial_x \phi)$ and we write the variation and the variational principle as follow
+\begin{equation*}
+\begin{split}
+S =  \int \dd t \int \dd x \, \mathcal{L} =  \int \dd t L
+\end{split}\quad\quad\quad\quad\quad
+\begin{split}
+\var{S} = 0
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+\var{S} & = \int \dd t \int \dd x \, \mathcal{L}(\phi + \var{\phi}, \dot \phi + \pdv{t} \var{\phi}, \partial_x \phi + \partial_x \var{\phi}) 
+- \int \dd t \int \dd x \, \mathcal{L}(\phi , \, \dot \phi , \, \partial_x \phi ) \\
+& = \int\dd t\int \dd x\, \qty\bigg{\pdv{\mathcal{L}}{\phi} \var{\phi} - \pdv{\mathcal{L}}{(\partial_t \,\phi)} \partial_t \var{\phi} - \pdv{\mathcal{L}}{(\partial_x \,\phi) } \partial_x \var{\phi}} \\
+& = \int \dd t \int \dd x \, \qty\bigg{  \pdv{\mathcal{L}}{\phi} - \partial_t \pdv{\mathcal{L}}{(\partial_t \,\phi)} - \partial_x \pdv{\mathcal{L}}{(\partial_x \,\phi)}  } \var{\phi} 
+\end{split}
+\end{equation*}
+Hence we may set some boundary conditions at times $t_1$ and $t_2$, for the rod problem
+\begin{equation*}
+\begin{split}
+& \var{\phi}(\vec x, t_1) = 0 \\
+& \var{\phi}(\vec x, t_2) = 0
+\end{split}
+\end{equation*}
+Notice that the partial derivative of $\mathcal{L}$ with respect to $\phi$ is the following, 
+and trough which we find the \emph{Oiler-Lagrange equation} in \emph{Quantum Field Theory}
+\begin{equation*}
+\begin{split}
+\pdv{\mathcal{L}}{\phi} & = \partial_t \pdv{\mathcal{L}}{(\partial_t \phi)} + \partial_x \pdv{\mathcal{L}}{(\partial_x \phi)}  
++\partial_y \pdv{\mathcal{L}}{(\partial_y \phi)} +\partial_z \pdv{\mathcal{L}}{(\partial_z \phi)} \\
+\mbox{with} \quad \partial_{\mu} & = (\partial_1, \partial_2, \partial_3, \partial_4) = (\partial_t, \partial_x, \partial_y, \partial_z)
+\end{split}
+\quad\quad\Rightarrow\quad\quad
+\begin{split}
+\partial_{\mu} \pdv{\mathcal{L}}{\partial (\partial_{\mu} \phi)} = \pdv{\mathcal{L}}{\phi}
+\end{split}
+\end{equation*}
+The lagrangian density may be generalized in 3-D:
+\begin{equation*}
+\begin{split}
+\mathcal{L} = & \frac{1}{2} (\partial_t \phi)^2 - \frac{1}{2} (\partial_x \phi)^2 - \frac{1}{2} (\partial_y \phi)^2 - \frac{1}{2} (\partial_z \phi)^2 \\
+= &  \frac{1}{2} (\partial_{\mu} \phi)^2
+\end{split}
+\quad\quad\quad\quad\quad \mbox{where} \quad (\partial_{\mu} \phi)^2  = \partial_{\mu} \phi \,\partial_{\mu} \phi
+\end{equation*}
+This shorter notation implicitly implement the relativity, with $v=1$ and natural units.
+If you want to describe a physical system, like the rod, you must instead keep it explicit with $v \neq 0$ 
+and the Lagrangian will need one term more, such that
+\begin{equation*}
+\mathcal{L} = - \frac{1}{2} (\partial_{\mu} \phi)^2 - \frac{1}{2} m^2 \phi^2
+\end{equation*}
 
+\paragraph{Solve the motion equation} starting from the lagrangian above, we derive it w.r.t. $\phi$ and w.r.t. $\partial_{\mu}\phi$
+\begin{equation*}
+\begin{split}
+& \mathcal{L} = - \frac{1}{2} (\partial_{\mu} \phi)^2 - \frac{1}{2} m^2 \phi^2 \\
+&\begin{cases}
+\quad \pdv{\mathcal{L}}{\phi} & = - m^2 \phi \\
+\pdv{\mathcal{L}}{(\partial_{\mu}\phi)} & = - (\partial_{\mu}\phi)
+\end{cases}
+\end{split}
+\end{equation*}
+Using the \emph{laplacian} we find 
+\begin{equation*}
+\begin{split}
+\partial_{\mu}\,\partial_{\mu} & = \partial_{1}\,\partial_{1} + \partial_{2}\,\partial_{2} + \partial_{3}\,\partial_{3} - \partial_{t}\,\partial_{t} \\
+& =  \nabla_{1}\,\nabla_{1} + \nabla_{2}\,\nabla_{2} + \nabla_{3}\,\nabla_{3} - \nabla_{t}\,\nabla_{t} \\
+& = \nabla^{2} - \partial_{t}^{2} \, = \Box  
+\end{split}
+\quad\quad\Rightarrow\quad
+\begin{split}
+\partial_{\mu} (- \partial_{\mu} \phi ) & = - m^2 \phi \\
+- \Box \, \phi  & = - m^2 \phi
+\end{split}
+\quad\quad\Rightarrow\quad ( \Box - m^2 ) \, \phi  = 0
+\end{equation*}
+obtaining the \emph{Klein-Gordon equation}.
 
+\begin{equation*}
+\begin{split}
+\phi = e^{ i \, ( \vec p \cdot \vec x - \phi_0 \, t  ) } = e^{ i \, P_{\mu} x_{\mu} } 
+\quad\Rightarrow\quad 
+\Big(  -\vec P^2 + P_0^2 - m^2  \Big) = 0
+\quad\Rightarrow\quad
+P_0^2  = \vec P^2 + m^2  
+\end{split}
+\end{equation*}
+that describes the relativistic motion of a particle of mass $m$.
+Then the \emph{free particle} may have a positive or negative energy value $P_0$
+\begin{equation*}
+P_0 = \pm \sqrt{ \vec P^2 + m^2  }
+\end{equation*}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\paragraph{Time evolution} If we also want to consider the time dependency as QM time evolution we may write 
+\begin{equation*}
+\begin{split}
+e^{- i \,E \, t} = e^{- i \, (m + K_E)} 
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+\phi = e^{- i \, m \, t} \psi
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+\partial_t \phi = \dot \phi = \Big(   (-i\,m) e^{- i \, m \, t} \psi + e^{- i \, m \, t} \dot \psi   \Big) 
+\end{split}
+\end{equation*}
+and also the second time derivative
+\begin{equation*}
+\begin{split}
+\partial^2_t \phi =  \ddot \phi = &  \Big(   (-i\,m)  (-i\,m) e^{- i \, m \, t} \psi +  (-i\,m) e^{- i \, m \, t} \dot \psi +  (-i\,m) e^{- i \, m \, t} \dot \psi 
++ \underbrace{e^{- i \, m \, t} \ddot \psi }  \Big) \\
+= & \Big(  -m^2 e^{- i \, m \, t} \psi  - 2 i\,m e^{- i \, m \, t} \dot \psi   \Big) 
+\end{split}
+\end{equation*}
+With the approximation to the first order derivative $ e^{- i \, m \, t} \ddot \psi = 0 $ .
+Finally we find the solution that's something familiar to us
+\begin{equation*}
+\begin{split}
+& e^{- i \, m \, t} \Big(  \nabla^2 \psi + 2 i\,m \dot \psi + m^2 \psi - m^2 \psi  \Big) = 0 \\
+& \quad\Rightarrow\quad i \dot \psi  = - \frac{i}{2m} \nabla^2 \psi
+\end{split}
+\quad\quad \mbox{where} \quad \nabla^2 \phi = e^{- i \, m \, t} \nabla^2 \psi 
+\end{equation*}
+that's the \emph{Schrodinger equation} with $\hbar = 1$ that is the non-relativistic limit of the \emph{Klein-Gordon equation} that is a relativistic equation.
 
 
 
 
 
 \newpage
-\section{7 ottobre}
+\section{11 ottobre}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
