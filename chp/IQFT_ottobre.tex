@@ -22,6 +22,17 @@
 \begin{document}
 
 
+\vspace{30mm} % \newpage
+\section{22 settembre}
+
+\vspace{30mm} % \newpage
+\section{23 settembre}
+
+\vspace{30mm} % \newpage
+\section{27 settembre}
+
+
+\newpage
 \section{4 ottobre}
 \paragraph{The rod}
 Given a 1-dimensional rod composed by N-particles, linked each others with a "spring", the hamiltonian density is
@@ -470,7 +481,7 @@ and trough which we find the \emph{Euler-Lagrange equation} in \emph{Quantum Fie
 \end{split}
 \quad\quad\Rightarrow\quad\quad
 \begin{split}
-\partial_{\mu} \pdv{\mathcal{L}}{\partial (\partial_{\mu} \phi)} = \pdv{\mathcal{L}}{\phi}
+\partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi)} = \pdv{\mathcal{L}}{\phi}
 \end{split}
 \end{equation*}
 The lagrangian density may be generalized in 3-D:
@@ -562,24 +573,123 @@ that's the \emph{Schrodinger equation} with $\hbar = 1$ that is the non-relativi
 
 
 
+\newpage
+\section{11 ottobre}
+The electromagnetic field theory approach starts with a postulate: \emph{it is possible to derive the Maxwell's equations starting from a lagrangian}.
+From this postulate, we now ask to ourself which is that lagrangian that solves the Euler-Lagrangian equation (\ref{eq:EulerLagranEq})?
+\begin{equation*}
+\begin{split}
+\partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi)} = \pdv{\mathcal{L}}{\phi}
+\end{split} 
+\quad\quad\quad\mbox{where}\quad
+\begin{split}
+\phi = 
+\begin{cases}
+\phi \quad\quad \mbox{scalar potential} \\
+\vec A \quad\quad \mbox{vector potential} 
+\end{cases}
+\end{split}
+\label{eq:EulerLagranEq}
+\end{equation*}
+To do so, we start postulating that it may be
+\begin{equation*}
+\begin{split}
+\mathcal{L} = \frac{1}{2} \Big( \vec E^2 - \vec B^2 \Big) - \rho \, \phi + \vec J \cdot \vec A
+\end{split}
+\quad\quad\quad\mbox{where}\quad
+\begin{split}
+\begin{cases}
+\phi \, & \mapsto \quad \vec E = - \vec \nabla \phi - \pdv{\vec A}{t}  \\
+\vec A \, & \mapsto \quad \vec B = \vec \nabla \vec A 
+\end{cases}
+\end{split}
+\end{equation*}
+Where the magnetic field's components may be also written as $\, B_i = \epsilon_{i j k} \partial_j \, A_k$, using the Levi-Civita symbol.
+We can define a 4-vector that transforms following the Lorentz transformations as $\, A_{\mu} = (\vec A , i \, \phi) $.
+
+\paragraph{Maxwell's equations regression}
+\begin{equation*}
+\begin{split}
+\begin{cases}
+\vec \nabla \cdot \vec B = 0 \\
+\vec \nabla \times \vec B - \pdv{\vec E}{t} = \vec J   \quad\quad \mbox{corrent density - \emph{source}} \\
+\vec \nabla \cdot \vec E = \rho   \quad\quad\quad\quad\quad \; \mbox{charge density - \emph{source}} \\
+\vec \nabla \times \vec E + \pdv{\vec B}{t} = 0
+\end{cases}
+\end{split} 
+\Big\} \Rightarrow\quad \mbox{continuity equation} \quad
+\begin{split}
+\pdv{ \rho}{t} = - \vec \nabla \cdot \vec J 
+\end{split}
+\end{equation*}
+Now, similarly as before, we define a 4-vector that transforms following the Lorentz transformations as $\, J_{\mu} = (\vec J , i \, \rho) $.
+Which leads to the following lagrangian
+\begin{equation*}
+\begin{split}
+\mathcal{L} = \frac{1}{2} \Big( \vec E^2 - \vec B^2 \Big) - \rho \, \phi + J_{\mu}\,A_{\mu}
+\end{split}
+\end{equation*}
+What's left is to check if our new postulates and definitions are compatible with what we already know.
+\begin{equation*}
+\begin{split}
+\Big( \ldots \Big)
+\end{split}
+\end{equation*}
+
+\paragraph{Electromagnetic tensor} One we've our new lagrangian we may now introduce the \emph{electromagnetic tensor} $F_{\mu\nu}$ , as follow:
+\begin{equation*}
+\begin{split}
+F_{\mu\nu} = 
+\mqty[
+0 	& B_3 	& - B_2 	& - i\,E_1 \\
+- B_3 & 0     	&  B_1   	& - i\,E_2 \\
+B_2 	& - B_1   	&  0   	& - i\,E_3 \\
+E_1	& E_2	& E_3 	& 0
+]
+\end{split}
+\quad\Rightarrow\quad
+\mbox{\emph{antisimetrical tensor}}
+\end{equation*}
+
+
+
+
+
+
+
+
 
 
 \newpage
-\section{11 ottobre}
+\section{13 ottobre}
 
 
+\newpage
+\section{14 ottobre}
 
 
+\newpage
+\section{18 ottobre}
 
 
+\newpage
+\section{20 ottobre}
 
 
+\newpage
+\section{21 ottobre}
 
 
+\newpage
+\section{25 ottobre}
 
 
+\newpage
+\section{27 ottobre}
 
 
+\newpage
+\section{28 ottobre}
 
 
 
