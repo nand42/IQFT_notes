@@ -600,7 +600,7 @@ To do so, we start postulating that it may be
 \begin{split}
 \begin{cases}
 \phi \, & \mapsto \quad \vec E = - \vec \nabla \phi - \pdv{\vec A}{t}  \\
-\vec A \, & \mapsto \quad \vec B = \vec \nabla \vec A 
+\vec A \, & \mapsto \quad \vec B = \vec \nabla \times \vec A 
 \end{cases}
 \end{split}
 \end{equation*}
@@ -632,7 +632,7 @@ Which leads to the following lagrangian
 What's left is to check if our new postulates and definitions are compatible with what we already know.
 \begin{equation*}
 \begin{split}
-\Big( \ldots \Big)
+\Big( \ldots \,calculations\, \ldots \Big)
 \end{split}
 \end{equation*}
 
@@ -644,21 +644,122 @@ F_{\mu\nu} =
 0 	& B_3 	& - B_2 	& - i\,E_1 \\
 - B_3 & 0     	&  B_1   	& - i\,E_2 \\
 B_2 	& - B_1   	&  0   	& - i\,E_3 \\
-E_1	& E_2	& E_3 	& 0
+i\,E_1	& i\,E_2	& i\,E_3 	& 0
 ]
 \end{split}
 \quad\Rightarrow\quad
 \mbox{\emph{antisimetrical tensor}}
+\label{eq:electromagneticTensor}
+\end{equation*}
+and also 
+\begin{equation*}
+\begin{split}
+F_{\mu\nu} = 
+\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}
+\end{split}\quad \Longleftrightarrow \quad
+\begin{split}
+\begin{cases}
+B_i = & \epsilon_{ijk} \, \partial_j \, A_k = \Big( \vec \nabla \times \vec A \Big)_i \\
+B_i = & \frac{1}{2} \epsilon_{ijk} \, F_{jk} \quad \mbox{\small(inverse relation)} \\
+E_i = & F_{i\,4} = - F_{4 \, i} 
+\end{cases}
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+examples:
+\end{split}
+\begin{split}\quad
+\begin{cases}
+F_{1\,4} = \partial_{1} A_{4} - \partial_{4} A_{1} = i\,\partial_{1} \phi - i\, \pdv{A_1}{t} = i\, (-E_1 ) = - i\, E_1 \\
+F_{1\,2} = \partial_{1} A_{2} - \partial_{2} A_{1} = \Big( \vec \nabla \times \vec A \Big)_3 =
+\mdet{\partial_{1} & \partial_{2} \\ A_1 & A_2}_{\hat{k}} =   (\partial_{1} A_{2} - \partial_{2} A_{1})_{\hat{k}} = B_3
+\end{cases}
+\end{split}
+\end{equation*}
+This leads to a compact way to write the Maxwell's equations, in only one tensorial equation:
+\begin{equation*}
+\begin{split}
+\begin{cases}
+\partial_{\mu} F_{i \, \mu} = J_{i} \\
+\partial_{i} F_{4 \, i} = J_{4}\\
+\end{cases}
+\end{split} \quad\Rightarrow\quad
+\partial_{\mu} F_{\nu \mu} = J_{\nu}  \; .
 \end{equation*}
 
 
+\paragraph{The electromagnetic tensor and its dual}
+Starting from the definition \ref{eq:electromagneticTensor} of the electromagnetic tensor, we may see
+\begin{equation*}
+\begin{split}
+& F_{\mu \nu} F_{\mu \nu} = - F_{\mu \nu} F_{\nu \mu} = - T_{\mu} (F \cdot F) = 2 (\vec B^2 - \vec E^2) \\
+& \mbox{from which} \quad \mathcal{L} = - \frac{1}{4} F_{\mu \nu} F_{\mu \nu} + J_{\mu} A_{\mu}
+\end{split}
+\end{equation*}
+Trough the \emph{antisymmetric tensor} $T_{\mu \nu \lambda}$ it's possible to write the following identity:
+\begin{equation*}
+\partial_{\mu} F_{\nu \lambda} + \partial_{\nu} F_{\lambda \mu} + \partial_{\lambda} F_{\mu \nu} = 0
+\end{equation*}
 
+The \emph{dual tensor} of $F$ is as well invariant for \emph{cage transformations}
+\begin{equation*}
+\begin{split}
+\tilde{F}_{\mu \nu} \equiv \frac{1}{2} \epsilon_{\mu \nu \lambda \rho} F_{\lambda \rho} 
+= \mqty[
+0 	  & - i\,E_3 	&  i\,E_2 	& B_1 \\
+i\,E_3 & 0     	&  - i\,E_1   	& B_2 \\
+-i\,E_2 & i\,E_1   	&  0   	& B_3 \\
+-B_1	  & -B_2	& -B_3 	& 0
+]
+\end{split} \quad\quad
+\begin{split}
+\quad\quad & \mbox{Levi-Civita symbols:} \\
+&\quad \mbox{3-D} \quad \epsilon_{\mu \nu \lambda}  \;\,\quad\rightarrow\quad \epsilon_{1\, 2\, 3} = 1 \\
+&\quad \mbox{4-D} \quad \epsilon_{\mu \nu \lambda \rho}  \quad\rightarrow\quad \epsilon_{1\, 2\, 3\, 4} = - 1
+\end{split}
+\end{equation*}
+$\quad\leadsto \,$ An interesting \underline{exercise}, calculate: $\,F_{\mu \nu} \tilde{F}_{\mu \nu} = - 4 i \, \vec E \cdot \vec B \;$ and verify the equivalence.
 
+\begin{center}
+\fbox{\begin{minipage}{42em}
+\begin{center}
+\large
+Confusione con gli indici?
+\normalsize
+Il Prof. considera, al fine del corso, equivalente scrivere:
+\begin{equation*}
+A_{\mu} B^{\mu}  \; \longleftrightarrow \;  A_{\mu} B_{\mu} 
+\end{equation*}
+quindi attenzione, soprattutto rispetto alla notazione usata nel corso di \emph{General Relativity}.
+\end{center}
+\end{minipage}}
+\end{center}
 
-
-
-
-
+We know want to demonstrate that the tensor $F$ is \emph{cage invariant}, 
+so let's introduce the scalar quantity $\Lambda$ and write the transformation:
+\begin{equation*}
+\begin{split}
+A_{\mu} \;\longrightarrow\; A_{\mu} + \partial_{\mu} \Lambda
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}  \;\longrightarrow\; 
+F_{\mu \nu} & =  \partial_{\mu} A_{\nu} + \partial_{\mu}\partial_{\nu} \Lambda - \partial_{\nu} A_{\mu} - \partial_{\nu}\partial_{\mu} \Lambda \\
+& = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} 
+\end{split}
+\end{equation*}
+We may say that $F_{\mu \nu}$ \say{has the right combination of the magnetic and electron field}, to make two terms cancelled each other. \\
+A generic vector changes under Lorentz transformations as
+\begin{equation*}
+C_{\mu} \;\longrightarrow\; L_{\mu \nu} C_{\nu}
+\end{equation*}
+How does the $F_{\mu \nu}$ tensor changes under Lorentz transformations?
+\begin{equation*}
+F_{\mu \nu}  \;\longrightarrow\;   L_{\mu \mu'} L_{\nu \nu'}  F_{\mu' \nu'}
+\end{equation*}
 
 \newpage
 \section{13 ottobre}
@@ -688,8 +789,26 @@ E_1	& E_2	& E_3 	& 0
 \section{27 ottobre}
 
 
+
+
+
+
 \newpage
 \section{28 ottobre}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
