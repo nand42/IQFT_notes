@@ -20,7 +20,74 @@
 
 % Document
 \begin{document}
+\section{November 3rd}
+We have learned a very general method to look for conserved quantities, once we are aware of certain symmetries. Let us consider the symmetry under rotations of space coordinates. The variation of space coordinates under the most general rotation can be expressed as:
+\begin{equation}
+\delta x_{\mu}=\theta_{\mu\nu}x_{\nu}
+\end{equation}
+where $\theta$ is the antisymmetric matrix containing the infinitesimal angle of rotation.
+A more refined way to write it is by using the matrices $K_{\alpha\beta}$ introduced in \colorbox{red}{update here}. Just remember that the matrix $K_{\alpha\beta}$ has a $1$ in row $\alpha$, column $\beta$, a $-1$ in row $\beta$, column $\alpha$, and zeroes everywhere else. The more refined way is:
 
+\begin{align*}
+\delta x_{\mu}=\frac{1}{2}\theta_{\alpha\beta}\left(K_{\alpha\beta}\right)_{\mu\nu}x_{\nu}
+&=\frac{1}{2}\theta_{\alpha\beta}\left(\delta_{\alpha\mu}\delta_{\beta\nu}-\delta_{\alpha\nu}\delta_{\beta\mu}\right)_{\mu\nu}x_{\nu}= \\
+=\textcolor{blue}{\frac{1}{2}\theta_{\alpha\beta}\left(\delta_{\alpha\mu}x_{\beta}-\delta_{\beta\mu}x_{\alpha}\right)}&=\frac{1}{2}\left(\theta_{\mu\beta}x_{\beta}-\theta_{\alpha\mu}x_{\alpha}\right)=\\
+=&\theta_{\mu\beta}x_{\beta}
+\end{align*}
+
+where the last step is justified by the antisymmetry of $\theta$ and by the fact that $\alpha$, being a dumb index, can be renamed as $\beta$.
+While expanding the expression, we have found a specific way of writing the transformation (highlighted in blue) which is perfectly consistent with the way we wrote the most general coordinate transformation: $\delta x_{\mu}=M_{\mu_{(s)}}\xi_{(s)}$. It is easy to realize that, in our case, $M_{\mu_{\alpha\beta}}=\frac{1}{2}\left(\delta_{\alpha\mu}x_{\beta}-\delta_{\beta\mu}x_{\alpha}\right)$ and $\xi_{\alpha\beta}=\theta_{\alpha\beta}$.
+Recovering the expression for the conserved current we found \colorbox{red}{somewhere}:
+
+\begin{align*}
+J_{\mu_{(s)}}=\frac{\partial\mathcal{L}}{\partial(\partial\phi_a)}\left(\psi_{\alpha_{(s)}}-M_{\nu_{(s)}}\partial_{\nu}\phi_a\right)+M_{\nu_{(s)}}\mathcal{L}
+\end{align*}
+
+we can apply it to the specific case of the scalar field lagrangian $\mathcal{L}=-\frac{1}{2}(\partial_{\mu}\phi)(\partial_{\mu}\phi)-\frac{1}{2}m^2\phi^2$. A scalar lagrangian has obviously no components to be acted upon by $\psi_{\alpha_{(s)}}$, therefore this last quantity is simply absent in the expression of the conserved current. Let's evaluate $J_{\mu_{\alpha\beta}}$:
+\begin{align*}
+J_{\mu_{(\alpha\beta)}}&=-\partial_{\mu}\phi\left(0-\frac{1}{2}\left(\delta_{\alpha\nu}x_{\beta}-\delta_{\beta\nu}x_{\alpha}\right)\partial_{\nu}\phi\right)+\frac{1}{2}\left(\delta_{\alpha\mu}x_{\beta}-\delta_{\beta\mu}x_{\alpha}\right)\mathcal{L}=\\
+&=\frac{1}{2}(\partial_{\mu}\phi)x_{\beta}(\partial_{\alpha}\phi)+\frac{1}{2}\delta_{\alpha\mu}x_{\beta}\mathcal{L}-\frac{1}{2}(\partial_{\mu}\phi)x_{\alpha}(\partial_{\beta}\phi)-\frac{1}{2}\delta_{\beta\mu}x_{\alpha}\mathcal{L})=\\
+&=\frac{1}{2}\left(x_{\beta}(\partial_{\mu}\partial_{\alpha}\phi+\delta_{\alpha\mu}\mathcal{L}-x_{\alpha}(\partial_{\mu}\phi\partial_{\beta}\phi+\delta_{\beta\mu}\mathcal{L})\right)=\frac{1}{2}(x_{\beta}T_{\mu\alpha}-x_{\alpha}T_{\mu\beta})
+\end{align*}
+The expression we arrived to closely resembles that of an orbital angular momentum, if we recall that the tensor $T_{\alpha\beta}$ is associated to the conservedl inear momentum.
+
+Things change when we consider a vector field, like the $A_{\mu}$ of electromagnetism. This one will be changed when we act with Lorentz transformations upon the space. The variation $\delta A_{\mu}$ will be expressible as: 
+\begin{equation}
+\delta A_{\mu}=\psi_{\mu_{(s)}}\xi_{(s)}
+\label{eq:variation}
+\end{equation}
+Since vectors will change under Lorentz trasformations exactly like coordinates, we can observe that:
+\begin{align*}
+\psi_{\mu_{(\alpha\beta)}}\xi_{(\alpha\beta)}=\frac{1}{2}\theta_{\alpha\beta}(\delta_{\alpha\mu}A_{\beta}-\delta_{\beta\mu}A_{\alpha})
+\end{align*}
+Now this variation is also equal to $A_{\mu}'(x')-A_{\mu}(x)$. This quantity would be zero for a scalar field: \textit{the transformed field evaluated in the transformed point must always be equal to the non-transformed field evaluated in the non-transformed point}. This is the definition of a scalar field. Think of a temperature field: the temperature of a point should not depend on the velocity or on the orientation of the observer.
+On the contrary, the values of a vector field depend on the observer: the velocity of a point that lies somewhere in space is different for observers travelling at different velocities. This difference is precisely the one expressed by (\ref{eq:variation}). We can expand on these findings to obtain some more interesting results:
+\begin{align*}
+\delta A_{\mu}&=A'_{\mu}(x')-A_{\mu}(x)=A'_{\mu}(x')-A'_{\mu}(x)+A'_{\mu}(x)-A_{\mu}(x)=\\
+&=\delta x_{\mu}\partial_{\mu}A'_{\mu}(x)+\bar{\delta}A_{\mu}=\delta x_{\mu}\partial_{\mu}A_{\mu}(x)-\delta x_{\nu}\partial_{\nu}A_{\mu}(x)
+\end{align*}
+where:
+\begin{itemize}
+\item we have used the equality: $x'_{\mu}=x_{\mu}+\delta x_{\mu}$ to go from the first line to the second;
+\item we have recalled that $A'_{\mu}(x)=A_{\mu}(x)+\delta A_{\mu}(x)=A_{\mu}(x)+\psi_{\mu_{(\alpha\beta)}}\xi_{(\alpha\beta)}$ so that $\delta x_{\mu}\partial_{\mu}A'_{\mu}(x)=\delta x_{\mu}\partial_{\mu}A_{\mu}(x)+o(\xi^2)$ (we neglect all terms $o(\xi^2)$);
+\item we have observed that $\bar{\delta}A_{\mu}=A'_{\mu}(x)-A_{\mu}(x)=A_{\mu}(x_{\mu}-\delta x_{\mu})-A_{\mu}(x)=-\delta x_{\nu}\partial_{\nu}A_{\mu}(x)$
+\end{itemize}
+Exploiting these results, we can write the \textit{variation in form} (namely, the variation of the functional dependence on spacetime coordinates) of the electromagnetic lagrangian as:
+\begin{align*}
+\bar{\delta}\mathcal{L}&=\bar{\delta}\left(-\frac{1}{4}F_{\alpha\beta}F_{\alpha\beta}\right)=-F_{\alpha\beta}\frac{1}{2}\bar{\delta}(\partial_{\alpha}A_{\beta}-\partial_{\beta}A_{\alpha})=-F_{\alpha\beta}\bar{\delta}(\partial_{\alpha}A_{\beta})\\
+&=-F_{\alpha\beta}\partial_{\alpha}(\bar{\delta}A_{\beta})=F_{\alpha\beta}\partial_{\alpha}(\delta x_{\nu}\partial_{\nu}A_{\beta})
+\end{align*}
+Now expand the derivative to obtain:
+\begin{align*}
+&F_{\alpha\beta}\partial_{\alpha}(\delta x_{\nu}\partial_{\nu}A_{\beta})=F_{\alpha\beta}(\partial_{\alpha}\delta x_{\nu})\partial_{\nu}A_{\beta}+F_{\alpha\beta}\delta x_{\nu}\partial_{\nu}\partial_{\alpha}A_{\beta}=\\
+=&\partial_{\alpha}(F_{\alpha\beta}\delta x_{\nu}\partial_{\nu}A_{\beta})-\delta x_{\nu}\partial_{\alpha}(F_{\alpha\beta}\partial_{\nu}A_{\beta})+\delta x_{\nu}\partial_{\nu}\left(\frac{1}{4}F_{\alpha\beta}F_{\alpha\beta}\right)
+\end{align*}
+
+where we have applied the inverse rule of the derivative of a product to go from the first to the second line and we have played with the derivatives of $A_{\mu}$ to make another $F_{\alpha\beta}$ appear. If we now want to evaluate the variation of the action due to the variation in form of $\mathcal{L}$, as usual we need to take the integral: $\bar{\delta}S=\int d^4x\bar{\delta}\mathcal{L}$. This integral will kill the first term of $\bar{\delta}\mathcal{L}$, namely $\partial_{\alpha}(F_{\alpha\beta}\delta x_{\nu}\partial_{\nu}A_{\beta})$, since the argument of this 4-divergence vanishes on the boundaries. Using the remaining terms, we are now able to say that the relevant part of $\bar{\delta}\mathcal{L}$ is:
+\begin{equation}
+\bar{\delta}\mathcal{L}=-\delta x_{\nu}\partial_{\alpha}(F_{\alpha\beta}\partial_{\nu}A_{\beta}+\delta_{\alpha\nu}\mathcal{L})
+\end{equation}
+If we find that our lagrangian is invariant for rotations, we are sure that $\partial_{\alpha}T_{\nu\alpha}=0$, with $T_{\nu\alpha}=F_{\alpha\beta}\partial_{\nu}A_{\beta}+\delta_{\alpha\nu}\mathcal{L}$. It is possible to define a gauge invariant (and also symmetric) version of $T$, namely $\bar{T}_{\nu\alpha}=F_{\alpha\beta}F_{\nu\beta}+\delta_{\nu\alpha}\mathcal{L}$, which is again divergenceless.
 
 
 \end{document}
