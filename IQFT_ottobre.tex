@@ -1,0 +1,981 @@
+%%
+%% Author: Dario Chinelli
+%% begin 2022-10-16
+%% last mod 2022-12-24
+%%
+
+
+%%  NON ESEGUIRE QUESTO FILE !
+
+
+% Preamble
+\documentclass[class=article]{standalone}
+
+% Packages
+\usepackage[subpreambles=true]{standalone}
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+
+% Document
+\begin{document}
+
+
+\vspace{30mm} % \newpage
+\section{22 settembre}
+
+\vspace{30mm} % \newpage
+\section{23 settembre}
+
+\vspace{30mm} % \newpage
+\section{27 settembre}
+
+
+\newpage
+\section{4 ottobre}
+\paragraph{The rod}
+Given a 1-dimensional rod composed by N-particles, linked each others with a "spring", the hamiltonian density is
+
+\begin{equation*}
+\begin{split}
+\mathcal{H} = \frac{1}{2} \sum_{n=1}^{N} \Big[  P_n^2 + \Omega^2 (q_n - q_{n+1})^2 + \Omega_0^2 q_n^2 \Big]
+\end{split}
+\end{equation*}
+
+where the last term $\Omega_0^2 q_n^2$ is relative to the equilibrium position of the n-particle.
+The \emph{periodic boundaries conditions} to $N \to \infty$ and $a \to 0$.
+
+On the other side we can write the Newtonian equation as 
+
+\begin{equation*}
+\begin{split}
+& H = \frac{1}{2} \int_{0}^{L} dx \Big[ p^2(x) + v^2 \Big( \frac{\partial q(x)}{\partial x} \Big) \Big] \\
+% & \mbox{where} \\
+&  p(x) = \dot q(x) \\
+&  \ddot q(x) = v^2 \frac{\partial^2 q(x)}{\partial x^2}
+\end{split}
+\end{equation*}
+
+the solution inside the boundaries is
+\begin{equation*}
+\ddot q_n = \Omega^2 \Big( q_{n+1} + q_{n-1} -2 q_n \Big)
+\end{equation*}
+
+
+\paragraph{Normal modes} or normal frequencies
+\begin{equation*}
+\begin{split}
+& q_n = \sum_j e^{i j n} \frac{Q_j}{\sqrt{N}} \\
+& q(x) =  \frac{1}{\sqrt{a} } \sum_n e^{ \frac{2 \pi l}{N a} (n a) } \frac{Q_j}{\sqrt{N}}  = \frac{1}{\sqrt{a} }  \sum_k e^{i k x} \frac{Q_k}{\sqrt{N}} \\
+& \quad\quad k = \frac{2 \pi l}{L} \\
+& \Rightarrow\quad q(x) =  \sum_k e^{i k x} \frac{Q_k}{\sqrt{N a}} =  \sum_k e^{i k x} \frac{Q_k}{\sqrt{L}}
+\end{split}
+\end{equation*}
+
+Considering now the Newtonian equation, $p^2(x) = \dot q^2(x) $, 
+$ \sum_{n=1}^N e^{i n (j-j')} = \delta_{j, j'}$ where $j = \frac{2\pi l}{N}$, 
+we can move from the sum to the integral using the following relation 
+$ \sum_{n=1}^N \to \frac{1}{a} \int_{0}^{L} dx$ and this leads to
+$\int_{0}^{L} dx e^{i (k-k') x} = L \delta_{k, k'}$ .
+
+Somehow we may land on this following expression:
+\begin{equation*}
+\frac{1}{L} \sum_{k, k'} L \, \delta_{k, k'} Q_k \dot Q_{k'} = \sum_k Q_k \dot Q_{k} =   \sum_k | \dot Q_{k} |^2
+\end{equation*}
+To finally get a \emph{total classical description}: a discrete sum on a numerable set, as follow
+
+\begin{equation*}
+H = \frac{1}{2}  \sum_k  | \dot Q_{k} |^2 + k^2 v^2  | Q_{k} |^2
+\end{equation*}
+
+As before, notice that the sum $ \sum_{n=1}^N $ for $L \to \infty$ became $\frac{L}{2 \pi} \int dk$ and it admits waves.
+Extending this to 3-dimensional space, it became
+\begin{equation*}
+ \sum_{\vec k} (\ldots) \quad (\mbox{when }L \to \infty) \quad \frac{V}{(2\pi)^3} \int d^3 k 
+\end{equation*}
+
+\paragraph{Quantum system:}  let's consider now a quantum system, a quantum description. \\
+\emph{Postulate} the followings:
+
+\begin{equation*}
+\begin{split}
+& \Big[ q_l , p_n \Big] = i \, \delta_{l\,n} \\
+& \Big[ q_l , q_n \Big] = 0 \\
+& \Big[ p_l , p_n \Big] = 0 \\
+\end{split}\quad\quad\quad
+\begin{split}
+& \Big[ Q_l , P_n \Big] = i \, \delta_{ln} \\
+& \Big[ Q_l , Q_n \Big] = 0 \\
+& \Big[ P_l , P_n \Big] = 0
+\end{split}\quad\quad\quad
+\begin{split}
+& \mbox{Where natural units are applied:} \\
+& \quad\quad h = 1 \\
+& \quad\quad c = 1
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+& \Rightarrow\quad\quad q_n^{\dagger} = q_n  \quad , \quad Q_{-j} = Q_{j}^{\dagger} \quad , \quad  P_{-j} = P_{j}^{\dagger} \\
+\mbox{e.g.} & \quad q_n^{\dagger} = \Big( \sum_n e^{i n j} \frac{Q_j}{\sqrt{N}} \Big)^{\dagger} =  \sum_j e^{ - i n j} \frac{Q_j^{\dagger}}{\sqrt{N}} = q_n
+\end{split}
+\end{equation*}
+
+From the hamiltonian
+\begin{equation*}
+\mathcal{H} = \frac{1}{2} \sum_j \Big[ P_j\,P_j^{\dagger} + \omega_j^2 \, Q_j\,Q_j^{\dagger}  \Big]
+\end{equation*}
+and given the following operators, we find $Q_j$ and $P_j$:
+\begin{equation*}
+\begin{split}
+& a_j = \frac{1}{\sqrt{2\omega_j}} \Big( \omega_j Q_j + i\,P_j^{\dagger} \Big) \\
+& a_j = \frac{1}{\sqrt{2\omega_j}} \Big( \omega_j Q_j^{\dagger} - i\,P_j \Big) 
+\end{split}\quad\quad\quad\Rightarrow\quad\quad
+\begin{split}
+& Q_j = \frac{1}{\sqrt{2\omega_j}} \Big( a_j + a_{-j}^{\dagger} \Big) \\
+& P_j = -i \Big( \frac{\omega_j}{2} \Big)^{\frac{1}{2}} \Big( a_{-j} - a_j^{\dagger} \Big)
+\end{split}\quad\quad\quad\quad \mbox{and} \quad\quad
+\begin{split}
+& \mbox{keep in mind} \\
+& \Big[ a_j , a_{j'} \Big] = \delta_{j \, j'}
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+& Q_j Q_j^{\dagger} = \frac{1}{2 \omega_j} \Big( a_j a_j^{\dagger} + a_j a_{-j} + a_{-j}^{\dagger} a_j^{\dagger} + a_{-j}^{\dagger} a_{-j} \Big) \\
+& P_j P_j^{\dagger} =  \Big( \frac{\omega_j}{2} \Big)^{\frac{1}{4}} \Big( a_{-j} a_{-j}^{\dagger} - a_{-j} a_j - a_j^{\dagger}a_{-j}^{\dagger} + a_j^{\dagger} a_j \Big)
+\end{split}
+\end{equation*}
+With these lasts results we may write the $\mathcal{H}$ as
+\begin{equation*}
+\begin{split}
+\mathcal{H} & = \frac{1}{2} \sum_j \Big[ P_j\,P_j^{\dagger} + \omega_j^2 \, Q_j\,Q_j^{\dagger}  \Big]
+ =  \frac{1}{2} \sum_j \omega_j \Big( a_j a_j^{\dagger} + a_j^{\dagger} a_j \Big) \\
+& =  \frac{1}{2} \sum_j  \omega_j \Big( 2 \, a_j^{\dagger} a_j + 1 \Big)
+= \sum_j  \omega_j \Big( a_j^{\dagger} a_j + \frac{1}{2} \Big)
+\end{split}
+\end{equation*}
+
+\paragraph{Phonons description} Phonons are bosons, they're used to describe the quantum problem of the rod. Phonons are like photons but in the world of sound instead of light.
+A n-particles system is defined with 
+\begin{equation*}
+\ket{n_1, n_2, n_3, \ldots } = (a_1^{\dagger})^{n_1}  (a_2^{\dagger})^{n_2}  (a_3^{\dagger})^{n_3} \ldots \ket{0}
+\end{equation*}
+and for the 1-d oscillator, with energy $E_n$, is as follows
+\begin{equation*}
+\begin{split}
+& \ket{n} =  (a^{\dagger})^{n} \ket{0} \\
+& E_n = \hbar \omega (n + \frac{1}{2}) \stackrel{nu}{=} \omega (n + \frac{1}{2}) 
+\end{split}
+\end{equation*}
+For the phonons is easy to \emph{understand} which is the medium that make the transmission possible, but what about light?
+For the light, photons, the medium may also be the \emph{vacuum}.
+
+\begin{center}
+Filosofeggiamo un po' ora:
+\fbox{\begin{minipage}{42em}
+\begin{center}
+\large \emph{Particles are the excitation of the field} \\
+\normalsize If you don't touch the piano it stays quiet, but if you play it it makes music ... song's particles.
+\large \emph{The field is permanent.} \\
+\normalsize \emph{Particles are not fixed, they live and die.} \\
+You cannot touch or see the field that you're studying, but you can see/detect the particle that pop out from the field. \\
+\large Fields are NOT real but mathematical description of the world.
+\end{center}
+\end{minipage}}
+\end{center}
+
+When you measure an energy it's always relative to an offset, a ground-state.
+Because you want the \emph{vacuum} to be Lorentz invariant.
+\begin{equation*}
+\quad\Rightarrow\quad 
+\Big( \mathcal{H} - E_0 \Big) \ket{0} = 0
+\end{equation*}
+
+Given a general operator $\Theta (t)$ and its derivate $\dot \Theta = i \Big[ \mathcal{H}, \Theta(t) \Big]$ so that: 
+
+\begin{equation*}
+\begin{split}
+\dot a(t) = i  \Big[ \mathcal{H}, a(t) \Big] = - i \, \omega a(t)
+\end{split} 
+\quad\quad \mbox{where}\quad
+\begin{split}
+& \Big[ a ,  \mathcal{H}\Big]  = \omega a \\
+& \Big[ \mathcal{H} , a^{\dagger} \Big]  = \omega a^{\dagger}
+\end{split}
+\quad\quad\Rightarrow\quad
+\begin{split}
+a(t) = e^{-i \omega t} a(0)
+\end{split}
+\end{equation*}
+
+(Finire lezione del 4 ottobre manca mezza pagina di esercizio - chiedere appunti)
+
+
+\newpage
+\section{6 ottobre}
+
+\begin{equation*}
+\begin{split}
+\phi(x) & = \sum_{\vec k} \frac{1}{\sqrt{2 \omega_k V}} \Big( a_{\bar k} e^{i k x} +  a_{\bar k}^{\dagger} e^{-i k x} \Big) \\
+& = \sum_{\vec k} \frac{i}{2 V} \Big[ e^{i\,\vec k (\vec x \cdot \vec y)} + e^{- i\,\vec k (\vec x \cdot \vec y)} \Big]
+\end{split} \quad\quad\quad\mbox{considering} \quad
+\begin{split}
+& \Big[ a_k , a_{\bar k}^{\dagger}  \Big] = \delta_{\bar k, \bar k'} \\
+& \Big[ \phi(\vec x, t), \dot\phi(\vec y, t) \Big] = i \, V \delta^3 (\vec x - \vec y)
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+&\mbox{Da capire che senso ha} \\
+&\mbox{e contestualizzarlo} \quad\Rightarrow
+\end{split}\quad\quad\quad\quad
+\begin{split}
+& k_{\mu} = (\vec k , i \omega_{\vec k}) \\
+& x_{\mu} = (\vec x , i t) \\
+& k_{\mu} x_{\mu} = \vec k \cdot \vec x = k_{\mu} k_{\nu} \delta_{\mu\,\nu} \\
+& k_{\mu} x_{\mu} = \vec k \cdot \vec x - \omega_{\vec k} t
+\end{split}
+\end{equation*}
+
+
+\emph{When things go to infinity} $\sum_{\vec k}  \rightarrow \frac{V}{(2\pi)^3} \int d^3 \vec k$ and remember that \say{\emph{if things doesn't work there will be some volume $V$ somewhere}}.
+Creation and destruction operators are contained into the description of the field.
+The energy levels' order are given from the term $ n \omega$ and you can forgot about the $\frac{1}{2}$.
+
+\paragraph{Classical problem} Given the coordinates $q_i(t)$ time-dependents, where $i = 1, 2, 3, \ldots, 3N$, we can write the system of the $2^o$ order derivate as follow
+\begin{equation*}
+\begin{split}
+& F_i = m \ddot q_i \\
+& F_i = - \frac{d V}{d q_i}
+\end{split}
+\quad\quad \mbox{given the initial conditions}\quad
+\begin{split}
+& q_i(t_0) \\
+& \dot q_i(t_0) 
+\end{split}
+\quad\quad \mbox{or given the boundary conditions}\quad
+\begin{split}
+& q_i(t_1) \,,\, q_i(t_2)   \\
+& \dot q_i(t_1) \,,\, \dot q_i(t_2)  
+\end{split}
+\end{equation*}
+
+\paragraph{Action Functional} The \emph{Action Functional $S$} 
+\begin{equation*}
+S = \int_{t_1}^{t_2} dt \, L \Big( q_i(t),\dot q_i(t) \Big)
+\end{equation*}
+is defined such that a variation on the trajectory leads to a variation on $S$.
+So we can make a variables' transformation such that the new coordinates are the same as before plus a variational term
+\begin{equation*}
+\begin{split}
+& q_i(t) \rightarrow q_i(t) + \delta q_i(t) \\
+& \dot q_i(t) \rightarrow \dot q_i(t) + \delta \dot q_i(t) =  \dot q_i(t) + \frac{d}{dt} \delta q_i(t)
+\end{split}
+\end{equation*}
+hence the action became
+
+\begin{equation*}
+\begin{split}
+\delta S & = \int_{t_1}^{t_2} L \Big( q_i(t) + \delta q_i(t) ,  \dot q_i(t) + \frac{d}{dt} \delta q_i(t) \Big) dt -  \int_{t_1}^{t_2} dt \, L \Big( q_i(t),\dot q_i(t) \Big) dt = \\
+& =  \int_{t_1}^{t_2} \, \Big(   \frac{\partial L}{\partial q_i} \delta q_i(t)    , \frac{\partial L}{\partial \dot q_i}  \frac{d}{dt} \delta q_i(t)    \Big)  dt
+=  \int_{t_1}^{t_2} \Big(  \frac{\partial L}{\partial q_i}  - \frac{d}{dt}  \frac{\partial L}{\partial \dot q_i}   \Big) \delta q_i \, dt
+\end{split}
+\end{equation*}
+in the last step we used the boundary condition at $t_1$ and $t_2$, so that $\delta q_i(t_1) = \delta q_i(t_2) = 0$.
+The last step leads directly to the \emph{lagrangian equation}, that referred to the following generic $L$ in 3-D is:
+\begin{equation*}
+\begin{split}
+& \frac{d}{dt} \Big( \frac{\partial L}{\partial \dot q_i} \Big) = \frac{\partial L}{\partial q_i} \\
+& L = \frac{1}{2} m \dot\vec q^2 - V(\vec q)
+\end{split}
+\end{equation*}
+this leads to the Newton equation for the \emph{free motion}:
+\begin{equation*}
+\begin{split}
+& F = 0 \\ 
+& m \ddot q_i = - \frac{\partial V}{\partial q_i }  = F
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& \ddot \vec q = 0 \\
+& \dot \vec q = \vec w \\
+& \vec q = \vec w t + \vec r
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& \vec q_1 = \vec w t_1 + \vec r \\
+& \vec q_2 = \vec w t_2 + \vec r
+\end{split}
+\end{equation*}
+so now we can find the Lagrangian depending on $q_1,q_2$ and $t_1,t_2$
+\begin{equation*}
+\begin{split}
+& \vec w = \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} \\
+& \vec q =  \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} t + \vec r
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& (t= t_1) : \; (t_1 - t_2) \vec q_1 =  (\vec q_1 \cdot \vec q_2) t_1 + \vec r (t_1 - t_2) \\
+& (t= t_2) : \; (t_1 - t_2) \vec q_2 =  (\vec q_1 \cdot \vec q_2) t_2 + \vec r (t_1 - t_2) 
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+& \vec q = \Big( \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} \Big) t + \frac{\vec q_2 t_1 - \vec q_1 t_2}{t_1 - t_2} \\
+& \dot \vec q =  \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2}  
+\end{split}
+\end{equation*}
+where the last two equations explicit the boundary conditions. 
+The Lagrangian of a free motion became
+\begin{equation*}
+\begin{split}
+L = \frac{1}{2} m \dot \vec q^2 = \frac{1}{2} m \Big( \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2} \Big)^2
+\end{split}
+\end{equation*}
+And the minimal Action is written as follow and represents \say{the true trajectory}
+\begin{equation*}
+\begin{split}
+\int_{t_1}^{t_2} dt L = \frac{1}{2} m \Big(   \frac{\vec q_1 \cdot \vec q_2}{t_1 - t_2}  \Big)^2 (t_1 - t_2)  = S_{min}
+\end{split}
+\end{equation*}
+
+\begin{center}
+\fbox{\begin{minipage}{42em}
+\begin{center}
+\large
+\say{\emph{The real motion is given by the minimum action.}}
+\normalsize
+\end{center}
+\end{minipage}}
+\end{center}
+
+\paragraph{Hamiltonian equation}
+What happen with the generic lagrangian instead substituting the free motion path?
+Starting from the lagrangian equation:
+\begin{equation*}
+\begin{split}
+\frac{d }{d t } \Big( \frac{\partial L}{\partial \dot q_i } \Big) - \frac{\partial L}{\partial q_i }  & = 0  \quad\quad  \Big[ \mbox{where}\quad \dot q_i = p_i \Big]  \\ 
+\dot q_i \frac{d }{d t } \Big( \frac{\partial L}{\partial \dot q_i } \Big) - \dot q_i \frac{\partial L}{\partial q_i } & = 0 \\
+\frac{d }{d t } \Big( \dot  q_i \frac{\partial L}{\partial \dot q_i } \Big) - \underbrace{ \dot  q_i \frac{\partial L}{\partial \dot  q_i} - \dot  q_i \frac{\partial L}{\partial  q_i } } & = 0 \\
+\frac{d }{d t } \Big( \dot  q_i \frac{\partial L}{\partial \dot q_i } \Big) -  \frac{d }{d t } \Big( L (q_i, \dot q_i) \Big) & = 0
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+\frac{d }{d t } \Big( \dot q_i p_i - L(q_i, \dot q_i) \Big) = 0
+\end{split}
+\end{equation*}
+
+Given the lagrangian as $L(q_i, \dot q_i)$ let's check its \emph{invariance} when the coordinates change: the lagrangian must not change.
+For small $\varepsilon$
+\begin{equation*}
+\begin{split}
+q_i  & \to q_i + \varepsilon_i f_i(q_1, \ldots, q_i, \ldots, q_N) \\
+\dot q_i  & \to \dot q_i + \varepsilon_i \frac{d }{d t }  f_i(q_1, \ldots, q_i, \ldots, q_N)
+\end{split}
+\end{equation*}
+We can write the variation of the lagrangian as
+\begin{equation*}
+\begin{split}
+\sum \frac{\partial L}{\partial q_i } \delta q_i + \frac{\partial L}{\partial \dot q_i } \delta \dot q_i & = 0 \\
+\sum \underbrace{ \frac{\partial L}{\partial q_i } } f_i + \underbrace{ \frac{\partial L}{\partial \dot q_i }} \frac{d }{d t } f_i & = 0 \\
+\frac{d }{d t } \Big( \frac{\partial L}{\partial \dot q_i }  \Big) \quad\quad \tau_i \quad\quad\; &
+\end{split}\quad\quad\quad\longrightarrow\quad
+\begin{split}
+\frac{d }{d t } \sum_i p_i f_i = 0
+\end{split}
+\end{equation*}
+Since the lagrangian is \emph{invariant} for transformation, as we just saw, this leads to a \emph{conservation} $\leftrightarrow$ \emph{symmetry}.
+This concept is also known as \emph{Noether theorem}.
+
+
+\vspace{10mm}
+\large 
+Now ...something here not so clear...
+
+\normalsize
+about changing formalism from Classical Mechanic to Quantum Mechanic.
+\vspace{10mm}
+
+
+\paragraph{Hamiltonian and lagrangian density}
+Since the beginning of the course we introduce, without saying, and use the hamiltonian density $\mathcal{H}$ instead of the hamiltonian $H$, that is defined as:
+\begin{equation*}
+H = \int_0^L dx \, \mathcal{H}
+\end{equation*}
+as well as the lagrangian density $\mathcal{L}$ instead of the lagrangian L:
+\begin{equation*}
+L = \int_0^L dx \, \mathcal{L} \quad\quad\quad\quad \mbox{( ! controllare se è corretto ! )}
+\end{equation*}
+
+
+\paragraph{Back to the \emph{rod}} using now in hamiltonian formalism
+\begin{equation*}
+\begin{split}
+\mathcal{H} & = \frac{1}{2} \dot \phi^2 + \frac{1}{2} v^2 (\partial_x \phi) 
+= \frac{1}{2} p^2 + \frac{1}{2} v^2 (\partial_x \phi) \\
+\mathcal{L}  = p \, \dot q - \mathcal{H} & = \dot\phi \dot\phi - \Big( \frac{1}{2} \phi^2  +  \frac{1}{2} v^2 (\partial_x \phi)^2  \Big) 
+= \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 
+\end{split}\quad\quad\quad\quad
+\begin{split}
+\mbox{where}\quad p = \dot \phi 
+\end{split}
+\end{equation*}
+when the velocity is set as $v = \Omega a$ it depends strictly on the material of the medium.
+So when moving in the vacuum, and not along a rod, what happens? 
+The velocity will be set to $v = c = 1$, as natural units are used, and \say{forget the mass} such that $m=1$.
+The lagrangian density became consistent with this
+\begin{equation}
+\begin{split}
+\mathcal{L} = \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 
+\end{split}
+\label{eq:lagrangian_phi}
+\end{equation}
+The definition of \emph{field} goes with the definition of a proper \emph{energy density}.
+The action became:
+\begin{equation*}
+\begin{split}
+S = \int_{t_1}^{t_2} dt \, L =  \int_{t_1}^{t_2} dt \int_0^L dx \, \mathcal{L}
+\end{split}
+\end{equation*}
+
+
+
+
+\newpage
+\section{7 ottobre}
+Continuing from the lagrangian \ref{eq:lagrangian_phi} 
+\begin{equation*}
+\begin{split}
+\mathcal{L}  = \frac{1}{2} \dot \phi^2 - \frac{1}{2} v^2 (\partial_x \phi)^2 = \frac{1}{2} (\partial_t \phi)^{2}  - \frac{1}{2} v^2 (\partial_x \phi)^{2}
+\end{split}
+\end{equation*}
+we see the lagrangian as function of these variables $\mathcal{L} = \mathcal{L}(\phi, \, \partial_t \phi, \, \partial_x \phi)$ and we write the variation and the variational principle as follow
+\begin{equation*}
+\begin{split}
+S =  \int \dd t \int \dd x \, \mathcal{L} =  \int \dd t L
+\end{split}\quad\quad\quad\quad\quad
+\begin{split}
+\var{S} = 0
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+\var{S} & = \int \dd t \int \dd x \, \mathcal{L}(\phi + \var{\phi}, \dot \phi + \pdv{t} \var{\phi}, \partial_x \phi + \partial_x \var{\phi}) 
+- \int \dd t \int \dd x \, \mathcal{L}(\phi , \, \dot \phi , \, \partial_x \phi ) \\
+& = \int\dd t\int \dd x\, \qty\bigg{\pdv{\mathcal{L}}{\phi} \var{\phi} - \pdv{\mathcal{L}}{(\partial_t \,\phi)} \partial_t \var{\phi} - \pdv{\mathcal{L}}{(\partial_x \,\phi) } \partial_x \var{\phi}} \\
+& = \int \dd t \int \dd x \, \qty\bigg{  \pdv{\mathcal{L}}{\phi} - \partial_t \pdv{\mathcal{L}}{(\partial_t \,\phi)} - \partial_x \pdv{\mathcal{L}}{(\partial_x \,\phi)}  } \var{\phi} 
+\end{split}
+\end{equation*}
+Hence we may set some boundary conditions at times $t_1$ and $t_2$, for the rod problem
+\begin{equation*}
+\begin{split}
+& \var{\phi}(\vec x, t_1) = 0 \\
+& \var{\phi}(\vec x, t_2) = 0
+\end{split}
+\end{equation*}
+Notice that the partial derivative of $\mathcal{L}$ with respect to $\phi$ is the following, 
+and trough which we find the \emph{Euler-Lagrange equation} in \emph{Quantum Field Theory}
+\begin{equation*}
+\begin{split}
+\pdv{\mathcal{L}}{\phi} & = \partial_t \pdv{\mathcal{L}}{(\partial_t \phi)} + \partial_x \pdv{\mathcal{L}}{(\partial_x \phi)}  
++\partial_y \pdv{\mathcal{L}}{(\partial_y \phi)} +\partial_z \pdv{\mathcal{L}}{(\partial_z \phi)} \\
+\mbox{with} \quad \partial_{\mu} & = (\partial_1, \partial_2, \partial_3, \partial_4) = (\partial_t, \partial_x, \partial_y, \partial_z)
+\end{split}
+\quad\quad\Rightarrow\quad\quad
+\begin{split}
+\partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi)} = \pdv{\mathcal{L}}{\phi}
+\end{split}
+\end{equation*}
+The lagrangian density may be generalized in 3-D:
+\begin{equation*}
+\begin{split}
+\mathcal{L} = & \frac{1}{2} (\partial_t \phi)^2 - \frac{1}{2} (\partial_x \phi)^2 - \frac{1}{2} (\partial_y \phi)^2 - \frac{1}{2} (\partial_z \phi)^2 \\
+= &  \frac{1}{2} (\partial_{\mu} \phi)^2
+\end{split}
+\quad\quad\quad\quad\quad \mbox{where} \quad (\partial_{\mu} \phi)^2  = \partial_{\mu} \phi \,\partial_{\mu} \phi
+\end{equation*}
+This shorter notation implicitly implement the relativity, with $v=1$ and natural units.
+If you want to describe a physical system, like the rod, you must instead keep it explicit with $v \neq 0$ 
+and the Lagrangian will need one term more, such that
+\begin{equation*}
+\mathcal{L} = - \frac{1}{2} (\partial_{\mu} \phi)^2 - \frac{1}{2} m^2 \phi^2
+\end{equation*}
+
+\paragraph{Solve the motion equation} starting from the lagrangian above, we derive it w.r.t. $\phi$ and w.r.t. $\partial_{\mu}\phi$
+\begin{equation*}
+\begin{split}
+& \mathcal{L} = - \frac{1}{2} (\partial_{\mu} \phi)^2 - \frac{1}{2} m^2 \phi^2 \\
+&\begin{cases}
+\quad \pdv{\mathcal{L}}{\phi} & = - m^2 \phi \\
+\pdv{\mathcal{L}}{(\partial_{\mu}\phi)} & = - (\partial_{\mu}\phi)
+\end{cases}
+\end{split}
+\end{equation*}
+Using the \emph{laplacian} we find 
+\begin{equation*}
+\begin{split}
+\partial_{\mu}\,\partial_{\mu} & = \partial_{1}\,\partial_{1} + \partial_{2}\,\partial_{2} + \partial_{3}\,\partial_{3} - \partial_{t}\,\partial_{t} \\
+& =  \nabla_{1}\,\nabla_{1} + \nabla_{2}\,\nabla_{2} + \nabla_{3}\,\nabla_{3} - \nabla_{t}\,\nabla_{t} \\
+& = \nabla^{2} - \partial_{t}^{2} \, = \Box  
+\end{split}
+\quad\quad\Rightarrow\quad
+\begin{split}
+\partial_{\mu} (- \partial_{\mu} \phi ) & = - m^2 \phi \\
+- \Box \, \phi  & = - m^2 \phi
+\end{split}
+\quad\quad\Rightarrow\quad ( \Box - m^2 ) \, \phi  = 0
+\end{equation*}
+obtaining the \emph{Klein-Gordon equation}.
+
+\begin{equation*}
+\begin{split}
+\phi = e^{ i \, ( \vec p \cdot \vec x - \phi_0 \, t  ) } = e^{ i \, P_{\mu} x_{\mu} } 
+\quad\Rightarrow\quad 
+\Big(  -\vec P^2 + P_0^2 - m^2  \Big) = 0
+\quad\Rightarrow\quad
+P_0^2  = \vec P^2 + m^2  
+\end{split}
+\end{equation*}
+that describes the relativistic motion of a particle of mass $m$.
+Then the \emph{free particle} may have a positive or negative energy value $P_0$
+\begin{equation*}
+P_0 = \pm \sqrt{ \vec P^2 + m^2  }
+\end{equation*}
+
+\paragraph{Time evolution} If we also want to consider the time dependency as QM time evolution we may write 
+\begin{equation*}
+\begin{split}
+e^{- i \,E \, t} = e^{- i \, (m + K_E)} 
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+\phi = e^{- i \, m \, t} \psi
+\end{split}\quad\Rightarrow\quad
+\begin{split}
+\partial_t \phi = \dot \phi = \Big(   (-i\,m) e^{- i \, m \, t} \psi + e^{- i \, m \, t} \dot \psi   \Big) 
+\end{split}
+\end{equation*}
+and also the second time derivative
+\begin{equation*}
+\begin{split}
+\partial^2_t \phi =  \ddot \phi = &  \Big(   (-i\,m)  (-i\,m) e^{- i \, m \, t} \psi +  (-i\,m) e^{- i \, m \, t} \dot \psi +  (-i\,m) e^{- i \, m \, t} \dot \psi 
++ \underbrace{e^{- i \, m \, t} \ddot \psi }  \Big) \\
+= & \Big(  -m^2 e^{- i \, m \, t} \psi  - 2 i\,m e^{- i \, m \, t} \dot \psi   \Big) 
+\end{split}
+\end{equation*}
+With the approximation to the first order derivative $ e^{- i \, m \, t} \ddot \psi = 0 $ .
+Finally we find the solution that's something familiar to us
+\begin{equation*}
+\begin{split}
+& e^{- i \, m \, t} \Big(  \nabla^2 \psi + 2 i\,m \dot \psi + m^2 \psi - m^2 \psi  \Big) = 0 \\
+& \quad\Rightarrow\quad i \dot \psi  = - \frac{i}{2m} \nabla^2 \psi
+\end{split}
+\quad\quad \mbox{where} \quad \nabla^2 \phi = e^{- i \, m \, t} \nabla^2 \psi 
+\end{equation*}
+that's the \emph{Schrodinger equation} with $\hbar = 1$ that is the non-relativistic limit of the \emph{Klein-Gordon equation} that is a relativistic equation.
+
+
+
+\newpage
+\section{11 ottobre}
+The electromagnetic field theory approach starts with a postulate: \emph{it is possible to derive the Maxwell's equations starting from a lagrangian}.
+From this postulate, we now ask to ourself which is that lagrangian that solves the Euler-Lagrangian equation (\ref{eq:EulerLagranEq})?
+\begin{equation*}
+\begin{split}
+\partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi)} = \pdv{\mathcal{L}}{\phi}
+\end{split} 
+\quad\quad\quad\mbox{where}\quad
+\begin{split}
+\phi = 
+\begin{cases}
+\phi \quad\quad \mbox{scalar potential} \\
+\vec A \quad\quad \mbox{vector potential} 
+\end{cases}
+\end{split}
+\label{eq:EulerLagranEq}
+\end{equation*}
+To do so, we start postulating that it may be
+\begin{equation*}
+\begin{split}
+\mathcal{L} = \frac{1}{2} \Big( \vec E^2 - \vec B^2 \Big) - \rho \, \phi + \vec J \cdot \vec A
+\end{split}
+\quad\quad\quad\mbox{where}\quad
+\begin{split}
+\begin{cases}
+\phi \, & \mapsto \quad \vec E = - \vec \nabla \phi - \pdv{\vec A}{t}  \\
+\vec A \, & \mapsto \quad \vec B = \vec \nabla \times \vec A 
+\end{cases}
+\end{split}
+\end{equation*}
+Where the magnetic field's components may be also written as $\, B_i = \epsilon_{i j k} \partial_j \, A_k$, using the Levi-Civita symbol.
+We can define a 4-vector that transforms following the Lorentz transformations as $\, A_{\mu} = (\vec A , i \, \phi) $.
+
+\paragraph{Maxwell's equations regression}
+\begin{equation*}
+\begin{split}
+\begin{cases}
+\vec \nabla \cdot \vec B = 0 \\
+\vec \nabla \times \vec B - \pdv{\vec E}{t} = \vec J   \quad\quad \mbox{corrent density - \emph{source}} \\
+\vec \nabla \cdot \vec E = \rho   \quad\quad\quad\quad\quad \; \mbox{charge density - \emph{source}} \\
+\vec \nabla \times \vec E + \pdv{\vec B}{t} = 0
+\end{cases}
+\end{split} 
+\Big\} \Rightarrow\quad \mbox{continuity equation} \quad
+\begin{split}
+\pdv{ \rho}{t} = - \vec \nabla \cdot \vec J 
+\end{split}
+\end{equation*}
+Now, similarly as before, we define a 4-vector that transforms following the Lorentz transformations as $\, J_{\mu} = (\vec J , i \, \rho) $.
+Which leads to the following lagrangian
+\begin{equation*}
+\begin{split}
+\mathcal{L} = \frac{1}{2} \Big( \vec E^2 - \vec B^2 \Big) - \rho \, \phi + J_{\mu}\,A_{\mu}
+\end{split}
+\end{equation*}
+What's left is to check if our new postulates and definitions are compatible with what we already know.
+\begin{equation*}
+\begin{split}
+\Big( \ldots \,calculations\, \ldots \Big)
+\end{split}
+\end{equation*}
+
+\paragraph{Electromagnetic tensor} One we've our new lagrangian we may now introduce the \emph{electromagnetic tensor} $F_{\mu\nu}$ , as follow:
+\begin{equation*}
+\begin{split}
+F_{\mu\nu} = 
+\mqty[
+0 	& B_3 	& - B_2 	& - i\,E_1 \\
+- B_3 & 0     	&  B_1   	& - i\,E_2 \\
+B_2 	& - B_1   	&  0   	& - i\,E_3 \\
+i\,E_1	& i\,E_2	& i\,E_3 	& 0
+]
+\end{split}
+\quad\Rightarrow\quad
+\mbox{\emph{antisimetrical tensor}}
+\label{eq:electromagneticTensor}
+\end{equation*}
+and also 
+\begin{equation*}
+\begin{split}
+F_{\mu\nu} = 
+\partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}
+\end{split}\quad \Longleftrightarrow \quad
+\begin{split}
+\begin{cases}
+B_i = & \epsilon_{ijk} \, \partial_j \, A_k = \Big( \vec \nabla \times \vec A \Big)_i \\
+B_i = & \frac{1}{2} \epsilon_{ijk} \, F_{jk} \quad \mbox{\small(inverse relation)} \\
+E_i = & F_{i\,4} = - F_{4 \, i} 
+\end{cases}
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+examples:
+\end{split}
+\begin{split}\quad
+\begin{cases}
+F_{1\,4} = \partial_{1} A_{4} - \partial_{4} A_{1} = i\,\partial_{1} \phi - i\, \pdv{A_1}{t} = i\, (-E_1 ) = - i\, E_1 \\
+F_{1\,2} = \partial_{1} A_{2} - \partial_{2} A_{1} = \Big( \vec \nabla \times \vec A \Big)_3 =
+\mdet{\partial_{1} & \partial_{2} \\ A_1 & A_2}_{\hat{k}} =   (\partial_{1} A_{2} - \partial_{2} A_{1})_{\hat{k}} = B_3
+\end{cases}
+\end{split}
+\end{equation*}
+This leads to a compact way to write the Maxwell's equations, in only one tensorial equation:
+\begin{equation*}
+\begin{split}
+\begin{cases}
+\partial_{\mu} F_{i \, \mu} = J_{i} \\
+\partial_{i} F_{4 \, i} = J_{4}\\
+\end{cases}
+\end{split} \quad\Rightarrow\quad
+\partial_{\mu} F_{\nu \mu} = J_{\nu}  \; .
+\end{equation*}
+
+
+\paragraph{The electromagnetic tensor and its dual}
+Starting from the definition \ref{eq:electromagneticTensor} of the electromagnetic tensor, we may see
+\begin{equation*}
+\begin{split}
+& F_{\mu \nu} F_{\mu \nu} = - F_{\mu \nu} F_{\nu \mu} = - T_{\mu} (F \cdot F) = 2 (\vec B^2 - \vec E^2) \\
+& \mbox{from which} \quad \mathcal{L} = - \frac{1}{4} F_{\mu \nu} F_{\mu \nu} + J_{\mu} A_{\mu}
+\end{split}
+\end{equation*}
+Trough the \emph{antisymmetric tensor} $T_{\mu \nu \lambda}$ it's possible to write the following identity:
+\begin{equation*}
+\partial_{\mu} F_{\nu \lambda} + \partial_{\nu} F_{\lambda \mu} + \partial_{\lambda} F_{\mu \nu} = 0
+\end{equation*}
+
+The \emph{dual tensor} of $F$ is as well invariant for \emph{cage transformations}
+\begin{equation*}
+\begin{split}
+\tilde{F}_{\mu \nu} \equiv \frac{1}{2} \epsilon_{\mu \nu \lambda \rho} F_{\lambda \rho} 
+= \mqty[
+0 	  & - i\,E_3 	&  i\,E_2 	& B_1 \\
+i\,E_3 & 0     	&  - i\,E_1   	& B_2 \\
+-i\,E_2 & i\,E_1   	&  0   	& B_3 \\
+-B_1	  & -B_2	& -B_3 	& 0
+]
+\end{split} \quad\quad
+\begin{split}
+\quad\quad & \mbox{Levi-Civita symbols:} \\
+&\quad \mbox{3-D} \quad \epsilon_{\mu \nu \lambda}  \;\,\quad\rightarrow\quad \epsilon_{1\, 2\, 3} = 1 \\
+&\quad \mbox{4-D} \quad \epsilon_{\mu \nu \lambda \rho}  \quad\rightarrow\quad \epsilon_{1\, 2\, 3\, 4} = - 1
+\end{split}
+\end{equation*}
+$\quad\leadsto \,$ An interesting \underline{exercise}, calculate: $\,F_{\mu \nu} \tilde{F}_{\mu \nu} = - 4 i \, \vec E \cdot \vec B \;$ and verify the equivalence.
+
+\begin{center}
+\fbox{\begin{minipage}{42em}
+\begin{center}
+\large
+Confusione con gli indici?
+\normalsize
+Il Prof. considera, al fine del corso, equivalente scrivere:
+\begin{equation*}
+A_{\mu} B^{\mu}  \; \longleftrightarrow \;  A_{\mu} B_{\mu} 
+\end{equation*}
+quindi attenzione, soprattutto rispetto alla notazione usata nel corso di \emph{General Relativity}.
+\end{center}
+\end{minipage}}
+\end{center}
+
+We know want to demonstrate that the tensor $F$ is \emph{cage invariant}, 
+so let's introduce the scalar quantity $\Lambda$ and write the transformation:
+\begin{equation*}
+\begin{split}
+A_{\mu} \;\longrightarrow\; A_{\mu} + \partial_{\mu} \Lambda
+\end{split}
+\end{equation*}
+\begin{equation*}
+\begin{split}
+F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}  \;\longrightarrow\; 
+F_{\mu \nu} & =  \partial_{\mu} A_{\nu} + \partial_{\mu}\partial_{\nu} \Lambda - \partial_{\nu} A_{\mu} - \partial_{\nu}\partial_{\mu} \Lambda \\
+& = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} 
+\end{split}
+\end{equation*}
+We may say that $F_{\mu \nu}$ \say{has the right combination of the magnetic and electron field}, to make two terms cancelled each other. \\
+A generic vector changes under Lorentz transformations as
+\begin{equation*}
+C_{\mu} \;\longrightarrow\; L_{\mu \nu} C_{\nu}
+\end{equation*}
+How does the $F_{\mu \nu}$ tensor changes under Lorentz transformations?
+\begin{equation*}
+F_{\mu \nu}  \;\longrightarrow\;   L_{\mu \mu'} L_{\nu \nu'}  F_{\mu' \nu'}
+\end{equation*}
+
+\newpage
+\section{13 ottobre}
+Since the lagrangian 
+\begin{equation*}
+\begin{split}
+\mathcal{L} = -\frac{1}{4} F_{\mu \nu} F_{\mu \nu} + J_{\mu} A_{\mu}
+\end{split} \quad\quad\quad \mbox{where:}\quad
+\begin{split}
+F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}
+\end{split}
+\end{equation*}
+has to be considered in the action $S$:
+\begin{equation*}
+\begin{split}
+S = \int \dd[4]{x} \Big( -\frac{1}{4} F_{\mu \nu} F_{\mu \nu} + J_{\mu} A_{\mu} \Big)
+\end{split}
+\end{equation*}
+where the integrand is \emph{cage invariant} for the transformation
+\begin{equation*}
+\begin{split}
+A_{\mu} \;\longrightarrow\; A_{\mu} + \partial_{\mu} \Lambda 
+\end{split}\quad\quad\Rightarrow\quad
+\begin{split}
+\int \dd[4]{x} \Big( \partial_{\mu} J_{\mu} \Big) \Lambda = 0 \quad\quad (\leftarrow controllare)
+\end{split}
+\end{equation*}
+
+\paragraph{Rotations} Rotation in 3 dimension are given by the matrix $R(\phi)$ and where $\tilde{R}$ is its transposition.
+ \begin{equation*}
+\begin{split}
+& R(\phi) = \mqty[
+\cos\phi	& \sin\phi	& 0 \\
+-\sin\phi	& \cos\phi	& 0 \\
+0		& 0		& 1] \\
+& R \cdot \tilde{R} = 1
+\end{split}
+\end{equation*}
+Similar condition are true for Lorentz transformations $L$, such that
+\begin{equation*}
+\begin{split}
+& L \cdot \tilde{L} = 1 \\
+& L_{\mu \nu} \cdot (\tilde{L})_{\nu \rho} = \delta_{\mu \rho} \quad 
+\longrightarrow \; L_{\mu \nu} \delta_{\nu \beta} (\tilde{L})_{\beta \alpha} = \delta_{\mu \alpha} 
+\end{split}
+\end{equation*}
+Meanwhile in terms of $g$, as metric tensor, instead of $\delta$ we have:
+\begin{equation*}
+\begin{split}
+L^{\mu}\,_{\nu} (- g^{\nu \beta}) \,\tilde{L}_{\beta}\,^{\alpha} & = - g^{\mu \alpha} \\
+L^{\mu}\,_{\nu} \,g^{\nu \beta} \,\tilde{L}_{\beta}\,^{\alpha} & = g^{\mu \alpha} \; .
+\end{split}
+\end{equation*}
+
+\paragraph{Boost along $x$-direction}
+The Lorentz transformation of a boost along the $x$-direction 
+\begin{equation*}
+\begin{split}
+L =& \mqty[
+\cos\theta	&0	&0	&\sin\theta \\
+0		&1	&0	&0 \\
+0		&0	&1	&0 \\
+-\sin\theta	&0	&0	&\cos\theta
+] \\
+=&  \mqty[
+\cosh\psi	&0	&0	&i\,\sinh\psi \\
+0		&1	&0	&0 \\
+0		&0	&1	&0 \\
+-i\,\sinh\psi&0	&0	&\cosh\psi
+]
+\end{split} \quad\quad\quad
+\begin{split}
+& \mbox{where in the second row we used:} \\
+&\quad \sin\theta = \frac{i\,v}{\sqrt{1 - v^2}} \\
+&\quad \theta = i \, \psi \\
+&\quad \sin i\psi = i\,\sinh\psi \\
+&\quad \cos\theta = \sqrt{1 - v^2}
+\end{split}
+\end{equation*}
+When we consider the application of the Lorentz transformations $L$ to a vector $v = (x, y, z, it)$, it gives
+\begin{equation*}
+\begin{split}
+v' = L \, v 
+=  \mqty[
+\cosh\psi	&0	&0	&i\,\sinh\psi \\
+0		&1	&0	&0 \\
+0		&0	&1	&0 \\
+-i\,\sinh\psi&0	&0	&\cosh\psi
+]
+ \mqty[
+ x \\
+ y \\
+ z \\
+ i\,t 
+]
+=
+ \mqty[
+\cosh\psi \,x - i\,\sinh\psi \,t \\
+y \\
+z \\
+- i\,\sinh\psi \,x + i\,\cosh\psi \,t
+]
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\begin{cases}
+x' =& \cosh\psi \,x - \sinh\psi \,t \\
+y' =& y \\
+z' =& z \\
+t' =& -i\,\sinh\psi \,x + i\,\cosh\psi \,t
+\end{cases}
+\end{split} \quad\mbox{in the origin} \quad
+\begin{split}
+\begin{cases}
+x' =& \cancel{\cosh\psi \,x} - \sinh\psi \,t \\
+y' =& y \\
+z' =& z \\
+t' =& \cancel{-i\,\sinh\psi \,x} + i\,\cosh\psi \,t
+\end{cases}
+\end{split}
+\end{equation*}
+The velocity of the boost is given by
+\begin{equation*}
+\begin{split}
+v = \frac{x}{t} = \frac{\sinh\psi}{\cosh\psi} = \tanh\psi
+\end{split}
+\end{equation*}
+
+
+
+\paragraph{Infinitesimal rotation} 
+The first thing to do is to consider the first order approximation. 
+Consider $n$ a large number, such that $\frac{\phi}{n}$ is a \emph{small} angle, then
+\begin{equation*}
+\begin{split}
+R\Big( \frac{\phi}{n} \Big) = 
+\mqty[
+1			&\frac{\phi}{n}	&0	&0	\\
+-\frac{\phi}{n}	&1			&0	&0	\\
+0			&0			&1	&0	\\
+0			&0			&0	&1
+]
+= 1 + \frac{\phi}{n} L_3
+\end{split} \quad\quad\quad\quad
+\begin{split}
+& \mbox{since the generator of the rotation ($\hat{z}$-ax),} \\
+& \mbox{and the classical rotation are} \\
+& L_{3} = 
+\mqty[
+0	&1	&0	&0	\\
+-1	&0	&0	&0	\\
+0	&0	&0	&0	\\
+0	&0	&0	&0
+]
+\quad\quad
+ R(\phi) = 
+\mqty[
+\cos\phi	&\sin\phi	&0	&0	\\
+-\sin\phi	&\cos\phi	&0	&0	\\
+0		&0		&1	&0	\\
+0		&0		&0	&1
+]
+\end{split}
+\end{equation*}
+
+
+
+
+
+\newpage
+\section{14 ottobre}
+
+
+\newpage
+\section{18 ottobre}
+
+
+\newpage
+\section{20 ottobre}
+
+
+\newpage
+\section{21 ottobre}
+
+
+\newpage
+\section{25 ottobre}
+
+
+\newpage
+\section{27 ottobre}
+
+
+
+
+
+
+\newpage
+\section{28 ottobre}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
