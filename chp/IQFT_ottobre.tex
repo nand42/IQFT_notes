@@ -763,6 +763,172 @@ F_{\mu \nu}  \;\longrightarrow\;   L_{\mu \mu'} L_{\nu \nu'}  F_{\mu' \nu'}
 
 \newpage
 \section{13 ottobre}
+Since the lagrangian 
+\begin{equation*}
+\begin{split}
+\mathcal{L} = -\frac{1}{4} F_{\mu \nu} F_{\mu \nu} + J_{\mu} A_{\mu}
+\end{split} \quad\quad\quad \mbox{where:}\quad
+\begin{split}
+F_{\mu \nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}
+\end{split}
+\end{equation*}
+has to be considered in the action $S$:
+\begin{equation*}
+\begin{split}
+S = \int \dd[4]{x} \Big( -\frac{1}{4} F_{\mu \nu} F_{\mu \nu} + J_{\mu} A_{\mu} \Big)
+\end{split}
+\end{equation*}
+where the integrand is \emph{cage invariant} for the transformation
+\begin{equation*}
+\begin{split}
+A_{\mu} \;\longrightarrow\; A_{\mu} + \partial_{\mu} \Lambda 
+\end{split}\quad\quad\Rightarrow\quad
+\begin{split}
+\int \dd[4]{x} \Big( \partial_{\mu} J_{\mu} \Big) \Lambda = 0 \quad\quad (\leftarrow controllare)
+\end{split}
+\end{equation*}
+
+\paragraph{Rotations} Rotation in 3 dimension are given by the matrix $R(\phi)$ and where $\tilde{R}$ is its transposition.
+ \begin{equation*}
+\begin{split}
+& R(\phi) = \mqty[
+\cos\phi	& \sin\phi	& 0 \\
+-\sin\phi	& \cos\phi	& 0 \\
+0		& 0		& 1] \\
+& R \cdot \tilde{R} = 1
+\end{split}
+\end{equation*}
+Similar condition are true for Lorentz transformations $L$, such that
+\begin{equation*}
+\begin{split}
+& L \cdot \tilde{L} = 1 \\
+& L_{\mu \nu} \cdot (\tilde{L})_{\nu \rho} = \delta_{\mu \rho} \quad 
+\longrightarrow \; L_{\mu \nu} \delta_{\nu \beta} (\tilde{L})_{\beta \alpha} = \delta_{\mu \alpha} 
+\end{split}
+\end{equation*}
+Meanwhile in terms of $g$, as metric tensor, instead of $\delta$ we have:
+\begin{equation*}
+\begin{split}
+L^{\mu}\,_{\nu} (- g^{\nu \beta}) \,\tilde{L}_{\beta}\,^{\alpha} & = - g^{\mu \alpha} \\
+L^{\mu}\,_{\nu} \,g^{\nu \beta} \,\tilde{L}_{\beta}\,^{\alpha} & = g^{\mu \alpha} \; .
+\end{split}
+\end{equation*}
+
+\paragraph{Boost along $x$-direction}
+The Lorentz transformation of a boost along the $x$-direction 
+\begin{equation*}
+\begin{split}
+L =& \mqty[
+\cos\theta	&0	&0	&\sin\theta \\
+0		&1	&0	&0 \\
+0		&0	&1	&0 \\
+-\sin\theta	&0	&0	&\cos\theta
+] \\
+=&  \mqty[
+\cosh\psi	&0	&0	&i\,\sinh\psi \\
+0		&1	&0	&0 \\
+0		&0	&1	&0 \\
+-i\,\sinh\psi&0	&0	&\cosh\psi
+]
+\end{split} \quad\quad\quad
+\begin{split}
+& \mbox{where in the second row we used:} \\
+&\quad \sin\theta = \frac{i\,v}{\sqrt{1 - v^2}} \\
+&\quad \theta = i \, \psi \\
+&\quad \sin i\psi = i\,\sinh\psi \\
+&\quad \cos\theta = \sqrt{1 - v^2}
+\end{split}
+\end{equation*}
+When we consider the application of the Lorentz transformations $L$ to a vector $v = (x, y, z, it)$, it gives
+\begin{equation*}
+\begin{split}
+v' = L \, v 
+=  \mqty[
+\cosh\psi	&0	&0	&i\,\sinh\psi \\
+0		&1	&0	&0 \\
+0		&0	&1	&0 \\
+-i\,\sinh\psi&0	&0	&\cosh\psi
+]
+ \mqty[
+ x \\
+ y \\
+ z \\
+ i\,t 
+]
+=
+ \mqty[
+\cosh\psi \,x - i\,\sinh\psi \,t \\
+y \\
+z \\
+- i\,\sinh\psi \,x + i\,\cosh\psi \,t
+]
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\begin{cases}
+x' =& \cosh\psi \,x - \sinh\psi \,t \\
+y' =& y \\
+z' =& z \\
+t' =& -i\,\sinh\psi \,x + i\,\cosh\psi \,t
+\end{cases}
+\end{split} \quad\mbox{in the origin} \quad
+\begin{split}
+\begin{cases}
+x' =& \cancel{\cosh\psi \,x} - \sinh\psi \,t \\
+y' =& y \\
+z' =& z \\
+t' =& \cancel{-i\,\sinh\psi \,x} + i\,\cosh\psi \,t
+\end{cases}
+\end{split}
+\end{equation*}
+The velocity of the boost is given by
+\begin{equation*}
+\begin{split}
+v = \frac{x}{t} = \frac{\sinh\psi}{\cosh\psi} = \tanh\psi
+\end{split}
+\end{equation*}
+
+
+
+\paragraph{Infinitesimal rotation} 
+The first thing to do is to consider the first order approximation. 
+Consider $n$ a large number, such that $\frac{\phi}{n}$ is a \emph{small} angle, then
+\begin{equation*}
+\begin{split}
+R\Big( \frac{\phi}{n} \Big) = 
+\mqty[
+1			&\frac{\phi}{n}	&0	&0	\\
+-\frac{\phi}{n}	&1			&0	&0	\\
+0			&0			&1	&0	\\
+0			&0			&0	&1
+]
+= 1 + \frac{\phi}{n} L_3
+\end{split} \quad\quad\quad\quad
+\begin{split}
+& \mbox{since the generator of the rotation ($\hat{z}$-ax),} \\
+& \mbox{and the classical rotation are} \\
+& L_{3} = 
+\mqty[
+0	&1	&0	&0	\\
+-1	&0	&0	&0	\\
+0	&0	&0	&0	\\
+0	&0	&0	&0
+]
+\quad\quad
+ R(\phi) = 
+\mqty[
+\cos\phi	&\sin\phi	&0	&0	\\
+-\sin\phi	&\cos\phi	&0	&0	\\
+0		&0		&1	&0	\\
+0		&0		&0	&1
+]
+\end{split}
+\end{equation*}
+
+
+
 
 
 \newpage
